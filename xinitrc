@@ -18,7 +18,12 @@ unclutter &
 xbindkeys
 setxkbmap -layout us,ru -variant altgr-intl, -option grp:rctrl_toggle,terminate:ctrl_alt_bksp,grp_led:caps
 devmon --no-gui &
+gnome-keyring
+nm-applet &
 mpd ~/.config/mpd/mpd.conf
 feh --randomize --bg-fill ~/wallpapers/* &
+
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
 
 exec awesome
