@@ -32,3 +32,4 @@ vpn () { sudo systemctl $1 openvpn@nl2_udp.service }
 
 alias offscreen='xset dpms force off'
 
+unalias rm
