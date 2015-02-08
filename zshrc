@@ -25,6 +25,7 @@ alias p='mupdf -r 210'
 alias imv='feh -B checks -FZ --force-aliasing --keep-zoom-vp'
 alias devmon='devmon -g'
 alias feh='feh --fontpath /usr/share/fonts/TTF --font DejaVuSansMono/26'
+alias cm='cryptmount'
 
 #alias standby='sudo systemctl suspend'
 
