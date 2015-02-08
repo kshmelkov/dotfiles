@@ -24,7 +24,14 @@ Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'vim-latex/vim-latex'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
-
+Plugin 'sudo.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-repeat'
+Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bronson/vim-trailing-whitespace'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -61,9 +68,12 @@ filetype plugin indent on    " required
 
 syntax on
 
-set autoindent 
+set autoindent
 set smartindent
 set smarttab
+set shiftwidth=2
+set tabstop=2
+
 set ignorecase
 set smartcase		" case-sensitive search if a pattern has uppercase symbols
 set t_Co=256
@@ -92,18 +102,26 @@ set laststatus=2	" always show the status line
 set wildmenu
 
 let mapleader = ","
-map <F12> <leader>be
 
-nmap <C-S> :w!<CR>
-imap <C-S> <Esc>:w!<CR>a
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>wq :wq<CR>
 
-nmap <F10> :qa<CR>
-imap <F10> <Esc>:qa<CR>
-
+nmap <Leader>f :CtrlP<CR>
+nmap <Leader>b :CtrlPBuffer<CR>
 vmap <C-C> "+y
 nmap <C-V> "+p
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 inoremap <C-v> <C-r><C-p>+
-	
+nmap <Leader>/ :Ag 
+nmap <Leader>\ :nohlsearch<CR>
+
 set pastetoggle=<F3>
 
 set encoding=utf-8
@@ -117,6 +135,13 @@ augroup END
 
 autocmd VimLeave * call system("xsel -ib", getreg())
 
-set grepprg=grep\ -nH\ $*
+" set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 let g:airline_theme = 'base16'
+let g:indentLine_char = "┆"
+
+" highlight 80th column
+"if (exists('+colorcolumn'))
+		"set colorcolumn=80
+		"highlight ColorColumn ctermbg=5
+"endif
