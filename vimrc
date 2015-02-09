@@ -78,7 +78,7 @@ set ignorecase
 set smartcase		" case-sensitive search if a pattern has uppercase symbols
 set t_Co=256
 let base16colorspace=256
-colorscheme base16-default
+colorscheme base16-3024
 set background=dark
 set ruler		" always show the cursor position
 set number		" line numbering
