@@ -1,0 +1,8 @@
+set font                        "inconsolata 13"
+
+# setting recolor-keephue true will keep any color your pdf
+# has.  If it is set to false, it will just be shades of
+# gray.  (lol 50 shades of gray)
+set recolor-keephue             "true"
+
+set zoom best-fit

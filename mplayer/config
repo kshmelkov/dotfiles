@@ -1,0 +1,10 @@
+# Write your default config options here!
+ao=pulse
+af=scaletempo
+ass=true
+embeddedfonts=true
+subfont-text-scale=6
+font="DejaVu Sans"
+
+vo=vdpau,
+#vc=ffh264vdpau,ffmpeg12vdpau,ffodivxvdpau,ffwmv3vdpau,ffvc1vdpau,
