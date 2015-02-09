@@ -5,4 +5,6 @@ set font                        "inconsolata 13"
 # gray.  (lol 50 shades of gray)
 set recolor-keephue             "true"
 
-set zoom best-fit
+set zoom-step 25
+set smooth-scroll true
+set adjust-open width
