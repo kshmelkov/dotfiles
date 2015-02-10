@@ -35,3 +35,5 @@ urxvt*scrollTtyOutput:	false
 urxvt*scrollTtyKeypress:	true
 urxvt*mouseWheelScrollPage:	false
 
+urxvt*foreround:    #FFFFFF
+urxvt*background:   #000000
