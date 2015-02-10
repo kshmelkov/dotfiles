@@ -114,16 +114,16 @@ mytextclock = awful.widget.textclock()
 		--status:close()
 	--end
 --)
---vpnwidgettimer:start() 
+--vpnwidgettimer:start()
 
 -- MPD
 mpdwidget = lain.widgets.mpd({
     settings = function()
         artist = mpd_now.artist .. " "
         title  = mpd_now.title  .. "  "
-	
+
 	widget:set_markup(artist .. " - " .. title)
-	if mpd_now.state == "pause" or mpd_now.state == "stop" then 
+	if mpd_now.state == "pause" or mpd_now.state == "stop" then
 		widget:set_markup("")
         end
 
@@ -325,7 +325,16 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+
+    -- Multimedia keys
+    -- Mute is treated by BIOS
+    --awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute", false) end),
+    awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("xbacklight -inc 10", false) end),
+    awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("xbacklight -dec 10", false) end),
+    awful.key({}, "Pause", function() awful.util.spawn("mpc toggle", false) end),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up 10", false) end),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down 10", false) end)
 )
 
 clientkeys = awful.util.table.join(
