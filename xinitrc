@@ -19,7 +19,7 @@ setxkbmap -layout us,ru -variant altgr-intl, -option grp:rctrl_toggle,terminate:
 devmon --no-gui &
 gnome-keyring
 nm-applet &
-mpd ~/.config/mpd/mpd.conf
+mpd
 feh --randomize --bg-fill ~/wallpapers/* &
 
 autocutsel -fork &
