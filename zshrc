@@ -19,15 +19,16 @@ alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)
 alias dh='df -h'
 alias q='exit'
 alias й='exit'
-alias dj='djview4'
 alias pl='mplayer -shuffle **/*.mp3'
-alias p='mupdf -r 210'
 alias imv='feh -B checks -FZ --force-aliasing --keep-zoom-vp'
 alias devmon='devmon -g'
 alias feh='feh --fontpath /usr/share/fonts/TTF --font DejaVuSansMono/26'
 alias cm='cryptmount'
 
-#alias standby='sudo systemctl suspend'
+alias -s pdf='zathura'
+alias -s djvu='zathura'
+alias -s ps='zathura'
+alias -s html='firefox'
 
 vpn () { sudo systemctl $1 openvpn@nl2_udp.service }
 
