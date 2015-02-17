@@ -111,6 +111,7 @@ nnoremap <Leader>wq :wq<CR>
 
 nmap <Leader>f :CtrlP<CR>
 nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>m :CtrlPMRUFiles<CR>
 vmap <C-C> "+y
 nmap <C-V> "+p
 vmap <Leader>y "+y
