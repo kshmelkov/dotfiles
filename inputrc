@@ -1,3 +1,4 @@
+$include /etc/inputrc
 set editing-mode vi
 $if mode=vi
 set keymap vi-command
@@ -9,4 +10,4 @@ set keymap vi-insert
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 $endif
-$include /etc/inputrc
+set bell-style visible
