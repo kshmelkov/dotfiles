@@ -15,7 +15,7 @@ xrdb -merge ~/.Xresources
 #xrdb -merge ~/.config/base16-xresources/base16-3024
 start-pulseaudio-x11
 unclutter &
-setxkbmap -layout us,ru -variant altgr-intl, -option grp:rctrl_toggle,terminate:ctrl_alt_bksp,grp_led:caps
+setxkbmap -layout us,ru -variant altgr-intl, -option grp:shifts_toggle,terminate:ctrl_alt_bksp,grp_led:caps,caps:none
 devmon --no-gui &
 gnome-keyring
 nm-applet &
