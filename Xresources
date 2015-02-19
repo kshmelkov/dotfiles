@@ -11,7 +11,7 @@ Xft.rgba: rgb
 Xcursor.theme: Vanilla-DMZ
 
 URxvt.urgentOnBell: true
-! URxvt.visualBell: true
+URxvt.visualBell: true
 URxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
 URxvt.clipboard.autocopy: false
 URxvt.url-select.launcher:  firefox
