@@ -16,6 +16,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'ryanss/vim-hackernews'
 Plugin 'bling/vim-airline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'reedes/vim-pencil'
@@ -23,7 +24,6 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'vim-latex/vim-latex'
 Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
 Plugin 'sudo.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-speeddating'
@@ -148,3 +148,9 @@ let g:indentLine_char = "┆"
 		"set colorcolumn=80
 		"highlight ColorColumn ctermbg=5
 "endif
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = "1"
+let g:syntastic_python_python_exec = '/usr/bin/python2'
+let g:syntastic_python_pylint_args = '--extension-pkg-whitelist=numpy,scipy,sklearn'
+let g:syntastic_python_checkers = ['flake8', 'python']
+let g:syntastic_aggregate_errors = 1
