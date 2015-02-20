@@ -32,6 +32,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -105,15 +109,27 @@ set wildmenu
 
 let mapleader = ","
 
+nnoremap ; :
+nnoremap : ;
+nnoremap ! :!
+
 nnoremap <Leader>w :w<CR>
+nnoremap <Esc><Esc> :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
+nnoremap <Leader>e :b#<CR>
+
+nnoremap <Leader>n :Note 
+
+nnoremap <Tab> <C-W>
+nnoremap <Leader>t :TagbarToggle<CR>
 
 nmap <Leader>f :CtrlP<CR>
 nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>m :CtrlPMRUFiles<CR>
 vmap <C-C> "+y
 nmap <C-V> "+p
+
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -150,7 +166,11 @@ let g:indentLine_char = "┆"
 "endif
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "1"
+
 let g:syntastic_python_python_exec = '/usr/bin/python2'
 let g:syntastic_python_pylint_args = '--extension-pkg-whitelist=numpy,scipy,sklearn'
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_aggregate_errors = 1
+
+let g:notes_directories = ['~/notes']
+"let g:notes_new_note_template = '~/New note'
