@@ -124,9 +124,9 @@ nnoremap <Leader>n :Note
 nnoremap <Tab> <C-W>
 nnoremap <Leader>t :TagbarToggle<CR>
 
-nmap <Leader>f :CtrlP<CR>
-nmap <Leader>b :CtrlPBuffer<CR>
-nmap <Leader>m :CtrlPMRUFiles<CR>
+nnoremap <Leader>f :CtrlP<CR>
+nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>m :CtrlPMRUFiles<CR>
 vmap <C-C> "+y
 nmap <C-V> "+p
 
@@ -138,8 +138,8 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 inoremap <C-v> <C-r><C-p>+
-nmap <Leader>/ :Ag 
-nmap <Leader>\ :nohlsearch<CR>
+nnoremap <Leader>/ :Ag 
+nnoremap <Leader>\ :nohlsearch<CR>
 
 set pastetoggle=<F3>
 
