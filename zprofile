@@ -9,10 +9,10 @@
 # Browser
 #
 
-if [ -n "$DISPLAY" ]; then
-	export BROWSER=firefox
-else
+if [[ -z "$DISPLAY" ]]; then
 	export BROWSER=links
+else
+	export BROWSER=firefox
 fi
 
 #
