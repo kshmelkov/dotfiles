@@ -9,11 +9,7 @@
 # Browser
 #
 
-if [[ -z "$DISPLAY" ]]; then
-	export BROWSER=links
-else
-	export BROWSER=firefox
-fi
+export BROWSER=firefox
 
 #
 # Editors

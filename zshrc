@@ -28,6 +28,8 @@ alias -s djvu='zathura'
 alias -s ps='zathura'
 alias -s html='firefox'
 
+alias jrnl=' jrnl'
+
 vpn () { sudo systemctl $1 openvpn@nl2_udp.service }
 
 alias offscreen='xset dpms force off'
