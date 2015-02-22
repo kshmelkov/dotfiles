@@ -32,10 +32,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
+Plugin 'freitass/todo.txt-vim.git'
+Plugin 'JuliaLang/julia-vim'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -119,7 +120,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>e :b#<CR>
 
-nnoremap <Leader>n :Note 
+nnoremap <Leader>n :e ~/notes/
 
 nnoremap <Tab> <C-W>
 nnoremap <Leader>t :TagbarToggle<CR>
@@ -148,15 +149,19 @@ set fileencoding=utf-8
 
 augroup pencil
 	autocmd!
-	autocmd FileType markdown,mkd call pencil#init()
+	autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
 	autocmd FileType text         call pencil#init()
 augroup END
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost ~/notes/* set filetype=markdown
 
 autocmd VimLeave * call system("xsel -ib", getreg())
 
 " set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 let g:airline_theme = 'base16'
+let g:airline_section_x = '%{PencilMode()}'
 let g:indentLine_char = "┆"
 
 " highlight 80th column
@@ -172,5 +177,3 @@ let g:syntastic_python_pylint_args = '--extension-pkg-whitelist=numpy,scipy,skle
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_aggregate_errors = 1
 
-let g:notes_directories = ['~/notes']
-"let g:notes_new_note_template = '~/New note'
