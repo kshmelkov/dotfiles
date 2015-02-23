@@ -93,6 +93,7 @@ set hlsearch		" highlight search string
 set incsearch		" search while typing
 set showmatch
 set hidden		" don't abandon a hidden buffer
+set autoread            " reread file changed outside
 set gdefault		" default g flag in search replace
 set mousehide
 set history=1000
@@ -102,6 +103,7 @@ set confirm		" confirm before :w :q and so on set autochdir set title set noback
 set noswapfile
 set viminfo=
 set showmode
+set showcmd
 set laststatus=2	" always show the status line
 set wildmenu
 
