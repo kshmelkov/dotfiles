@@ -36,6 +36,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'freitass/todo.txt-vim.git'
+Plugin 'ludovicchabant/vim-lawrencium'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -109,7 +110,9 @@ set wildmenu
 
 let mapleader = ","
 
-nnoremap <CR> :
+nnoremap ; :
+
+nnoremap <Enter> o<ESC>
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Esc><Esc> :w<CR>
@@ -168,8 +171,8 @@ let g:indentLine_char = "┆"
 
 " highlight 80th column
 "if (exists('+colorcolumn'))
-		"set colorcolumn=80
-		"highlight ColorColumn ctermbg=5
+        "set colorcolumn=80
+        ""highlight ColorColumn ctermbg=darkgrey
 "endif
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "1"
