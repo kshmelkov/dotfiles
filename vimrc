@@ -36,7 +36,6 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'freitass/todo.txt-vim.git'
-Plugin 'JuliaLang/julia-vim'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -88,6 +87,7 @@ let base16colorspace=256
 colorscheme base16-3024
 set background=dark
 set ruler		" always show the cursor position
+set relativenumber
 set number		" line numbering
 set hlsearch		" highlight search string
 set incsearch		" search while typing
@@ -98,10 +98,7 @@ set mousehide
 set history=1000
 set noerrorbells
 set scrolloff=3
-set confirm		" confirm before :w :q and so on
-set autochdir
-set title
-set nobackup
+set confirm		" confirm before :w :q and so on set autochdir set title set nobackup
 set noswapfile
 set viminfo=
 set showmode
@@ -110,15 +107,18 @@ set wildmenu
 
 let mapleader = ","
 
-nnoremap ; :
-nnoremap : ;
-nnoremap ! :!
+nnoremap <CR> :
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Esc><Esc> :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>e :b#<CR>
+nnoremap <BS> :b#<CR>
+nnoremap Q :!./%<CR>
+nnoremap <Leader>s :w !sudo tee % > /dev/null
+
+nnoremap <Leader>j :bnext<CR>
+nnoremap <Leader>k :bprevious<CR>
 
 nnoremap <Leader>n :e ~/notes/
 
@@ -177,3 +177,4 @@ let g:syntastic_python_pylint_args = '--extension-pkg-whitelist=numpy,scipy,skle
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_aggregate_errors = 1
 
+let g:EasyMotion_leader_key = '<Space>'
