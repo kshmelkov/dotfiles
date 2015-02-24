@@ -17,7 +17,7 @@ export BROWSER=firefox
 
 export EDITOR='vim'
 export VISUAL='vim'
-export SUDO_EDITOR=rvim
+export SUDO_EDITOR='vim'
 export PAGER='less'
 
 #
