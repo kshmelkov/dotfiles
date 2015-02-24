@@ -38,6 +38,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'freitass/todo.txt-vim.git'
 Plugin 'ludovicchabant/vim-lawrencium'
 Plugin 'deris/vim-shot-f'
+Plugin 'kshenoy/vim-signature'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -126,11 +127,13 @@ nnoremap <BS> :b#<CR>
 nnoremap Q :!./%<CR>
 nnoremap <Leader>s :w !sudo tee % > /dev/null
 
-nnoremap <Leader>j :bnext<CR>
-nnoremap <Leader>k :bprevious<CR>
+"nnoremap <Leader>j :bnext<CR>
+"nnoremap <Leader>k :bprevious<CR>
 
 nnoremap <C-J> :bnext<CR>
 nnoremap <C-K> :bprevious<CR>
+
+nmap <Leader>j <Plug>IMAP_JumpForward
 
 nnoremap <Leader>n :e ~/notes/
 
