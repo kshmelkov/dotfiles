@@ -129,6 +129,9 @@ nnoremap <Leader>s :w !sudo tee % > /dev/null
 nnoremap <Leader>j :bnext<CR>
 nnoremap <Leader>k :bprevious<CR>
 
+nnoremap <C-J> :bnext<CR>
+nnoremap <C-K> :bprevious<CR>
+
 nnoremap <Leader>n :e ~/notes/
 
 nnoremap <Tab> <C-W>
