@@ -37,6 +37,7 @@ Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'freitass/todo.txt-vim.git'
 Plugin 'ludovicchabant/vim-lawrencium'
+Plugin 'deris/vim-shot-f'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -79,38 +80,41 @@ set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=8
-set expandtab
+set expandtab           " expand Tab into number of spaces
+set backspace=indent,eol,start  " correct backspace behaviour
 
 set ignorecase
 set smartcase		" case-sensitive search if a pattern has uppercase symbols
-set t_Co=256
+set t_Co=256            " 256 color terminal
 let base16colorspace=256
 colorscheme base16-3024
 set background=dark
 set ruler		" always show the cursor position
-set relativenumber
+set relativenumber      " relative numbering from the current line
 set number		" line numbering
 set hlsearch		" highlight search string
 set incsearch		" search while typing
-set showmatch
+set showmatch           " show matching bracket after insertion
 set hidden		" don't abandon a hidden buffer
 set autoread            " reread file changed outside
 set gdefault		" default g flag in search replace
 set mousehide
 set history=1000
 set noerrorbells
-set scrolloff=3
+set scrolloff=3         " minimum number of lines visible near above/below the cursor
 set confirm		" confirm before :w :q and so on set autochdir set title set nobackup
 set noswapfile
-set viminfo=
-set showmode
-set showcmd
+"set viminfo=
+set showmode            " show current mode in the status line
+set showcmd             " show a command while typing
 set laststatus=2	" always show the status line
 set wildmenu
+set undodir=~/.vim/undo " persistent-undo
+set undofile            " store all persistent-undos in a file
+set autowrite           " autosave buffer when it is hidden
+set autowriteall        " autosave all buffers when switching
 
 let mapleader = ","
-
-nnoremap ; :
 
 nnoremap <Enter> o<ESC>
 
@@ -133,6 +137,7 @@ nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <Leader>f :CtrlP<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
+" TODO: try to remove these keymappings
 vmap <C-C> "+y
 nmap <C-V> "+p
 
@@ -144,6 +149,7 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 inoremap <C-v> <C-r><C-p>+
+" TODO: make a fallback to ack or even grep
 nnoremap <Leader>/ :Ag 
 nnoremap <Leader>\ :nohlsearch<CR>
 
