@@ -182,10 +182,11 @@ let g:airline_section_x = '%{PencilMode()}'
 let g:indentLine_char = "┆"
 
 " highlight 80th column
-"if (exists('+colorcolumn'))
-        "set colorcolumn=80
-        ""highlight ColorColumn ctermbg=darkgrey
-"endif
+if (exists('+colorcolumn'))
+    "set colorcolumn=80
+    highlight ColorColumn ctermbg=darkgrey
+    call matchadd('ColorColumn', '\%81v', 100)
+endif
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "1"
 
