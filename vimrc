@@ -67,7 +67,7 @@ set confirm		" confirm before :w :q and so on set autochdir set title
 set nobackup
 set noswapfile
 "set viminfo=
-set showmode            " show current mode in the status line
+set noshowmode            " show current mode in the status line
 set showcmd             " show a command while typing
 set laststatus=2	" always show the status line
 set undodir=~/.vim/undo " persistent-undo
@@ -77,6 +77,9 @@ set autowriteall        " autosave all buffers when switching
 set shiftround          " round spaces number to shiftwidth
 set title               " set window title to a filename
 set clipboard=unnamedplus   " use X11 clipboard as unnamed register
+
+set ttimeout
+set ttimeoutlen=10
 
 " show trailing whitespaces
 set list
@@ -105,7 +108,7 @@ nnoremap : ;
 nnoremap <Enter> o<ESC>
 
 nnoremap <Leader>w :w<CR>
-nnoremap <Esc><Esc> :w<CR>
+"nnoremap <Esc><Esc> :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :b#<CR>
 nnoremap <BS> :b#<CR>
@@ -174,6 +177,7 @@ autocmd VimLeave * call system("xsel -ib", getreg())
 let g:tex_flavor = "latex"
 let g:airline_theme = 'base16'
 let g:airline_section_x = '%{PencilMode()}'
+let g:airline#extensions#tabline#enabled = 1
 let g:indentLine_char = "┆"
 
 " highlight 80th column
