@@ -31,6 +31,7 @@ Plug 'deris/vim-shot-f'  " TODO may be clever-f ?
 Plug 'kshenoy/vim-signature'
 Plug 'henrik/vim-indexed-search'
 Plug 'sjl/gundo.vim'
+Plug 'elzr/vim-json'
 
 call plug#end()
 
@@ -100,6 +101,8 @@ cnoremap w!! w !sudo tee % >/dev/null
 
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 nnoremap <Enter> o<ESC>
 
 nnoremap <Leader>w :w<CR>
@@ -112,6 +115,13 @@ nnoremap Q :!./%<CR>
 nnoremap <C-J> :bnext<CR>
 nnoremap <C-K> :bprevious<CR>
 
+" sane movements in wrap mode
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+"TODO remap it somewhere (localleader?)
 nmap <Leader>j <Plug>IMAP_JumpForward
 
 nnoremap <Leader>n :e ~/notes/
@@ -193,7 +203,7 @@ let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_aggregate_errors = 1
 
 let g:EasyMotion_leader_key = '<Space>'
-
+let g:vim_json_syntax_conceal = 0
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
     au!
