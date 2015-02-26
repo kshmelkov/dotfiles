@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'davidhalter/jedi-vim'
@@ -77,6 +76,7 @@ set autowrite           " autosave buffer when it is hidden
 set autowriteall        " autosave all buffers when switching
 set shiftround          " round spaces number to shiftwidth
 set title               " set window title to a filename
+set clipboard=unnamedplus   " use X11 clipboard as unnamed register
 
 " show trailing whitespaces
 set list
@@ -102,8 +102,6 @@ cnoremap w!! w !sudo tee % >/dev/null
 
 nnoremap ; :
 nnoremap : ;
-vnoremap ; :
-vnoremap : ;
 nnoremap <Enter> o<ESC>
 
 nnoremap <Leader>w :w<CR>
@@ -129,36 +127,25 @@ nnoremap <Leader>n :e ~/notes/
 
 nnoremap <Tab> <C-W>
 
-nnoremap <Leader>t :TagbarToggle<CR>
-"nnoremap <leader>g :GundoToggle<CR>
-"set pastetoggle=<leader>2
-"nnoremap <leader>5 :NERDTreeToggle<CR>
-nnoremap <leader>v :e ~/.vimrc<CR>
+nnoremap <Leader>4 :TagbarToggle<CR>
+nnoremap <leader>3 :GundoToggle<CR>
+nnoremap <leader>o :Explore<CR>
+nnoremap <leader>v :e $MYVIMRC<CR>
 
 nnoremap <Leader>f :CtrlP<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
-" TODO: try to remove these keymappings
-vmap <C-C> "+y
-nmap <C-V> "+p
 
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
-
-inoremap <C-v> <C-r><C-p>+
+inoremap <C-l> <C-r><C-p>+
 " TODO: make a fallback to ack or even grep
 nnoremap <Leader>/ :Ag 
 nnoremap <Leader>\ :nohlsearch<CR>
 
-nmap ,gs :Gstatus<cr>
-nmap ,ge :Gedit<cr>
-nmap ,gw :Gwrite<cr>
-nmap ,gr :Gread<cr>
-nmap ,gc :Gcommit<cr>
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>ge :Gedit<cr>
+nnoremap <Leader>gw :Gwrite<cr>
+nnoremap <Leader>gr :Gread<cr>
+nnoremap <Leader>gc :Gcommit<cr>
 
 " Use sane PCRE regexes.
 nnoremap / /\v
@@ -167,7 +154,7 @@ vnoremap / /\v
 " visual reselect of just pasted
 nnoremap gp `[v`]
 
-set pastetoggle=<F3>
+set pastetoggle=<C-b>
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -205,6 +192,7 @@ let g:syntastic_aggregate_errors = 1
 
 let g:EasyMotion_leader_key = '<Space>'
 let g:vim_json_syntax_conceal = 0
+
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
     au!
