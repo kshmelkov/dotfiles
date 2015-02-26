@@ -32,6 +32,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'henrik/vim-indexed-search'
 Plug 'sjl/gundo.vim'
 Plug 'elzr/vim-json'
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
