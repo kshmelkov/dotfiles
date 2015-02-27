@@ -33,7 +33,7 @@ Plug 'sjl/gundo.vim'
 Plug 'elzr/vim-json'
 Plug 'Raimondi/delimitMate'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'bkad/CamelCaseMotion'
+"Plug 'bkad/CamelCaseMotion'
 
 call plug#end()
 
