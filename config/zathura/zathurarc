@@ -8,3 +8,18 @@ set recolor-keephue             "true"
 set zoom-step 25
 set smooth-scroll true
 set adjust-open width
+set selection-clipboard clipboard
+set save_position true
+set save_zoom_level true
+
+set scroll_step 100.0
+
+map q quit
+map <PageUp> scroll full_up
+map <PageDown> scroll full_down
+map u scroll half_up
+map d scroll half_down
+#map b scroll full_up
+#map f scroll full_down
+map ] navigate next
+map [ navigate previous
