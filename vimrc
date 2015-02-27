@@ -32,6 +32,8 @@ Plug 'henrik/vim-indexed-search'
 Plug 'sjl/gundo.vim'
 Plug 'elzr/vim-json'
 Plug 'Raimondi/delimitMate'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'bkad/CamelCaseMotion'
 
 call plug#end()
 
