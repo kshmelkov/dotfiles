@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'davidhalter/jedi-vim'
 Plug 'ryanss/vim-hackernews'
 Plug 'bling/vim-airline'
@@ -11,7 +11,8 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'reedes/vim-pencil'
 Plug 'jamessan/vim-gnupg'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
-Plug 'vim-latex/vim-latex'
+"Plug 'vim-latex/vim-latex'
+Plug 'lervag/vim-latex'
 Plug 'scrooloose/syntastic'
 Plug 'sudo.vim'
 Plug 'Yggdroot/indentLine'
@@ -34,6 +35,11 @@ Plug 'elzr/vim-json'
 Plug 'Raimondi/delimitMate'
 Plug 'michaeljsmith/vim-indent-object'
 "Plug 'bkad/CamelCaseMotion'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'wikitopian/hardmode'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -67,6 +73,7 @@ set visualbell
 set scrolloff=3         " minimum number of lines visible near above/below the cursor
 set confirm		" confirm before :w :q and so on set autochdir set title 
 set nobackup
+set nowritebackup
 set noswapfile
 "set viminfo=
 set noshowmode            " show current mode in the status line
@@ -78,7 +85,12 @@ set autowrite           " autosave buffer when it is hidden
 set autowriteall        " autosave all buffers when switching
 set shiftround          " round spaces number to shiftwidth
 set title               " set window title to a filename
-set clipboard=unnamedplus   " use X11 clipboard as unnamed register
+set nrformats=          " treat all numerals as decimal
+if has ('unnamedplus')
+    set clipboard=unnamedplus   " use X11 clipboard as unnamed register
+else
+    set clipboard=unnamed
+endif
 
 set ttimeout
 set ttimeoutlen=10
@@ -111,8 +123,9 @@ nnoremap <Enter> o<ESC>
 
 nnoremap <Leader>w :w<CR>
 "nnoremap <Esc><Esc> :w<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>q :xa<CR>
 nnoremap <Leader>e :b#<CR>
+nnoremap <Leader>x :w<CR>:bd<CR>
 nnoremap <BS> :b#<CR>
 nnoremap Q :!./%<CR>
 
@@ -125,15 +138,12 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-"TODO remap it somewhere (localleader?)
-nmap <Leader>j <Plug>IMAP_JumpForward
-
 nnoremap <Leader>n :e ~/notes/
 
 nnoremap <Tab> <C-W>
 
-nnoremap <Leader>4 :TagbarToggle<CR>
-nnoremap <leader>3 :GundoToggle<CR>
+nnoremap <Leader>t :TagbarToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>o :Explore<CR>
 nnoremap <leader>v :e $MYVIMRC<CR>
 
@@ -159,7 +169,7 @@ vnoremap / /\v
 " visual reselect of just pasted
 nnoremap gp `[v`]
 
-set pastetoggle=<C-b>
+set pastetoggle=<Leader>p
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -175,12 +185,20 @@ autocmd BufNewFile,BufReadPost ~/notes/* set filetype=markdown
 
 autocmd VimLeave * call system("xsel -ib", getreg())
 
-" set grepprg=grep\ -nH\ $*
+" LaTeX-related setting
+set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
+
 let g:airline_theme = 'base16'
 let g:airline_section_x = '%{PencilMode()}'
+" buffers as pseudo-tabs
 let g:airline#extensions#tabline#enabled = 1
+" display only filename in tab title
+let g:airline#extensions#tabline#fnamemod = ':t'
+
 let g:indentLine_char = "┆"
+
+"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " highlight 80th column
 if (exists('+colorcolumn'))
@@ -188,6 +206,8 @@ if (exists('+colorcolumn'))
     highlight ColorColumn ctermbg=darkgrey
     call matchadd('ColorColumn', '\%81v', 100)
 endif
+
+" python settings
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "1"
 
@@ -199,6 +219,14 @@ let g:syntastic_aggregate_errors = 1
 let g:EasyMotion_leader_key = '<Space>'
 let g:vim_json_syntax_conceal = 0
 
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
     au!
@@ -207,3 +235,7 @@ augroup line_return
         \     execute 'normal! g`"zvzz' |
         \ endif
 augroup END
+
+" hard-mode to learn good vim habits
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
