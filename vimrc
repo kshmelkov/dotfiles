@@ -46,6 +46,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
+Plug 'szw/vim-g'
 
 call plug#end()
 
@@ -133,6 +134,8 @@ nnoremap <Leader>e :b#<CR>
 nnoremap <Leader>x :w<CR>:bd<CR>
 nnoremap <BS> :b#<CR>
 nnoremap Q :!./%<CR>
+nnoremap g/ :Google 
+nnoremap <Leader>g :Googlef 
 
 nnoremap <C-J> :bnext<CR>
 nnoremap <C-K> :bprevious<CR>
