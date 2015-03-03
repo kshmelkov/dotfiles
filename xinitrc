@@ -25,4 +25,6 @@ feh --randomize --bg-fill ~/wallpapers/*[jpg,png] &
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
 
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
+
 exec awesome
