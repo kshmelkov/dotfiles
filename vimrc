@@ -15,6 +15,8 @@ Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'rbonvall/vim-textobj-latex'
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'glts/vim-textobj-comment'
 Plug 'lervag/vim-latex'
 Plug 'scrooloose/syntastic'
 Plug 'sudo.vim'
@@ -36,13 +38,14 @@ Plug 'henrik/vim-indexed-search'
 Plug 'sjl/gundo.vim'
 Plug 'elzr/vim-json'
 Plug 'Raimondi/delimitMate'
-Plug 'michaeljsmith/vim-indent-object'
+" Plug 'michaeljsmith/vim-indent-object'
 "Plug 'bkad/CamelCaseMotion'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'wikitopian/hardmode'
+" Plug 'wikitopian/hardmode'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
@@ -165,6 +168,13 @@ nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gc :Gcommit<cr>
 
+noremap <Left> <NOP>
+noremap <Down> <NOP>
+noremap <Up> <NOP>
+noremap <Right> <NOP>
+noremap <PageUp> <NOP>
+noremap <PageDown> <NOP>
+
 " Use sane PCRE regexes.
 nnoremap / /\v
 vnoremap / /\v
@@ -240,5 +250,5 @@ augroup line_return
 augroup END
 
 " hard-mode to learn good vim habits
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+" nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
