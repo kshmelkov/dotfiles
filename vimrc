@@ -125,7 +125,6 @@ cnoremap w!! w !sudo tee % >/dev/null
 
 nnoremap ; :
 nnoremap : ;
-nnoremap <Enter> o<ESC>
 
 nnoremap <Leader>w :w<CR>
 "nnoremap <Esc><Esc> :w<CR>
