@@ -24,6 +24,7 @@ alias feh='feh --fontpath /usr/share/fonts/TTF --font DejaVuSansMono/26'
 alias cm='cryptmount'
 alias m='mplayer'
 alias f='feh -FZd --draw-tinted'
+alias nh='unset HISTFILE'
 
 alias -s pdf='zathura'
 alias -s djvu='zathura'
