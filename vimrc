@@ -213,7 +213,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:indentLine_char = "┆"
 
-"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s -i -l --nocolor -g ""'
 
 " highlight 80th column
 if (exists('+colorcolumn'))
