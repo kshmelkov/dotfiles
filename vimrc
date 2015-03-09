@@ -7,7 +7,7 @@ Plug 'tpope/vim-commentary'
 Plug 'davidhalter/jedi-vim'
 Plug 'ryanss/vim-hackernews'
 Plug 'bling/vim-airline'
-Plug 'Lokaltog/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 Plug 'reedes/vim-pencil'
 Plug 'jamessan/vim-gnupg'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
@@ -124,11 +124,9 @@ let mapleader = ","
 
 cnoremap w!! w !sudo tee % >/dev/null
 
-nnoremap ; :
-nnoremap : ;
+nnoremap <Enter> :
 
 nnoremap <Leader>w :w<CR>
-"nnoremap <Esc><Esc> :w<CR>
 nnoremap <Leader>q :xa<CR>
 nnoremap <Leader>e :b#<CR>
 nnoremap <Leader>x :w<CR>:bd<CR>
@@ -231,8 +229,8 @@ let g:syntastic_python_pylint_args = '--extension-pkg-whitelist=numpy,scipy,skle
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_aggregate_errors = 1
 
-let g:EasyMotion_leader_key = '<Space>'
 let g:vim_json_syntax_conceal = 0
+let g:sneak#streak = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
