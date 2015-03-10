@@ -32,7 +32,7 @@ Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
 Plug 'freitass/todo.txt-vim'
 Plug 'ludovicchabant/vim-lawrencium'
-Plug 'deris/vim-shot-f'  " TODO may be clever-f ?
+Plug 'deris/vim-shot-f'
 Plug 'kshenoy/vim-signature'
 Plug 'henrik/vim-indexed-search'
 Plug 'sjl/gundo.vim'
@@ -42,7 +42,6 @@ Plug 'Raimondi/delimitMate'
 "Plug 'bkad/CamelCaseMotion'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-" Plug 'wikitopian/hardmode'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
@@ -120,7 +119,7 @@ set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
 
-let mapleader = ","
+let mapleader = " "
 
 cnoremap w!! w !sudo tee % >/dev/null
 
@@ -134,6 +133,7 @@ nnoremap <BS> :b#<CR>
 nnoremap Q :!./%<CR>
 nnoremap g/ :Google 
 nnoremap <Leader>g :Googlef 
+nnoremap Y y$
 
 nnoremap <C-J> :bnext<CR>
 nnoremap <C-K> :bprevious<CR>
@@ -145,8 +145,6 @@ noremap gj j
 noremap gk k
 
 nnoremap <Leader>n :e ~/notes/
-
-nnoremap <Tab> <C-W>
 
 nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
@@ -190,6 +188,7 @@ set fileencoding=utf-8
 augroup pencil
 	autocmd!
 	autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
+	autocmd FileType todo call pencil#init({'wrap': 'soft'})
 	autocmd FileType text         call pencil#init()
 augroup END
 
@@ -248,7 +247,3 @@ augroup line_return
         \     execute 'normal! g`"zvzz' |
         \ endif
 augroup END
-
-" hard-mode to learn good vim habits
-" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-" nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
