@@ -25,6 +25,7 @@ alias cm='cryptmount'
 alias m='mpv'
 alias f='feh -FZd --draw-tinted'
 alias nh='unset HISTFILE'
+alias t='todo.sh'
 
 alias -s pdf='zathura'
 alias -s djvu='zathura'
