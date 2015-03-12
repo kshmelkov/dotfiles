@@ -4,7 +4,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'ryanss/vim-hackernews'
 Plug 'bling/vim-airline'
 Plug 'justinmk/vim-sneak'
@@ -12,12 +13,12 @@ Plug 'reedes/vim-pencil'
 Plug 'jamessan/vim-gnupg'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 "Plug 'vim-latex/vim-latex'
-Plug 'rbonvall/vim-textobj-latex'
-Plug 'bps/vim-textobj-python'
+Plug 'rbonvall/vim-textobj-latex', {'for': 'tex'}
+Plug 'bps/vim-textobj-python', {'for': 'python'}
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'glts/vim-textobj-comment'
-Plug 'lervag/vim-latex'
+Plug 'lervag/vim-latex', {'for': 'tex'}
 Plug 'scrooloose/syntastic'
 Plug 'sudo.vim'
 Plug 'Yggdroot/indentLine'
@@ -29,19 +30,19 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'freitass/todo.txt-vim'
 Plug 'ludovicchabant/vim-lawrencium'
 Plug 'deris/vim-shot-f'
 Plug 'kshenoy/vim-signature'
 Plug 'henrik/vim-indexed-search'
-Plug 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
 Plug 'elzr/vim-json'
 Plug 'Raimondi/delimitMate'
 " Plug 'michaeljsmith/vim-indent-object'
 "Plug 'bkad/CamelCaseMotion'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimproc.vim', {'do': 'make' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
@@ -232,7 +233,7 @@ let g:vim_json_syntax_conceal = 0
 let g:sneak#streak = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
