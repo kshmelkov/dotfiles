@@ -46,6 +46,7 @@ Plug 'Shougo/vimproc.vim', {'do': 'make' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'szw/vim-g'
 
 call plug#end()
@@ -131,13 +132,17 @@ nnoremap <Leader>q :xa<CR>
 nnoremap <Leader>e :b#<CR>
 nnoremap <Leader>x :w<CR>:bd<CR>
 nnoremap <BS> :b#<CR>
-nnoremap Q :!./%<CR>
+nnoremap <Leader>r :!./%<CR>
 nnoremap g/ :Google 
 nnoremap <Leader>g :Googlef 
 nnoremap Y y$
 
 nnoremap <C-J> :bnext<CR>
 nnoremap <C-K> :bprevious<CR>
+
+" restore classical Q behaviour
+nnoremap Q gqap
+vnoremap Q gq
 
 " sane movements in wrap mode
 noremap j gj
