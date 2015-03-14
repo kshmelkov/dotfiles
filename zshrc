@@ -26,6 +26,8 @@ alias m='mpv'
 alias f='feh -FZd --draw-tinted'
 alias nh='unset HISTFILE'
 alias t='todo.sh'
+alias myip='curl ifconfig.me'
+alias path='echo $PATH | tr ":" "\n"'
 
 alias -s pdf='zathura'
 alias -s djvu='zathura'
