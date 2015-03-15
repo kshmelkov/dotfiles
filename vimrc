@@ -33,7 +33,7 @@ Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'freitass/todo.txt-vim'
 Plug 'ludovicchabant/vim-lawrencium'
-Plug 'deris/vim-shot-f'
+" Plug 'deris/vim-shot-f'
 Plug 'kshenoy/vim-signature'
 Plug 'henrik/vim-indexed-search'
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
@@ -172,6 +172,21 @@ nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gc :Gcommit<cr>
 
+"replace 'f' with 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+"replace 't' with 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
+
 noremap <Left> <NOP>
 noremap <Down> <NOP>
 noremap <Up> <NOP>
@@ -236,6 +251,8 @@ let g:syntastic_aggregate_errors = 1
 
 let g:vim_json_syntax_conceal = 0
 let g:sneak#streak = 1
+let g:sneak#f_reset = 1
+let g:sneak#t_reset = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
