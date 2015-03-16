@@ -33,7 +33,6 @@ Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'freitass/todo.txt-vim'
 Plug 'ludovicchabant/vim-lawrencium'
-" Plug 'deris/vim-shot-f'
 Plug 'kshenoy/vim-signature'
 Plug 'henrik/vim-indexed-search'
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
@@ -47,6 +46,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'jeetsukumaran/vim-indentwise'
 Plug 'szw/vim-g'
 
 call plug#end()
