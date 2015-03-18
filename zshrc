@@ -28,6 +28,7 @@ alias nh='unset HISTFILE'
 alias t='todo.sh'
 alias myip='curl ifconfig.me'
 alias path='echo $PATH | tr ":" "\n"'
+alias zc='zcalc'
 
 alias -s pdf='zathura'
 alias -s djvu='zathura'
