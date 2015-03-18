@@ -18,7 +18,7 @@ Plug 'bps/vim-textobj-python', {'for': 'python'}
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'glts/vim-textobj-comment'
-Plug 'lervag/vim-latex', {'for': 'tex'}
+Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'scrooloose/syntastic'
 Plug 'sudo.vim'
 Plug 'Yggdroot/indentLine'
@@ -51,6 +51,7 @@ Plug 'szw/vim-g'
 
 call plug#end()
 
+set shortmess+=I        " Disable welcome message
 set autoindent
 set smartindent
 set smarttab
@@ -94,6 +95,8 @@ set autowriteall        " autosave all buffers when switching
 set shiftround          " round spaces number to shiftwidth
 set title               " set window title to a filename
 set nrformats=          " treat all numerals as decimal
+set ttyfast             " fast terminal redraw
+set lazyredraw          " don't redraw while executing macros and commands
 if has ('unnamedplus')
     set clipboard=unnamedplus   " use X11 clipboard as unnamed register
 else
@@ -121,7 +124,7 @@ set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
 
-let mapleader = " "
+let mapleader = "\<Space>"
 
 cnoremap w!! w !sudo tee % >/dev/null
 
@@ -165,6 +168,9 @@ inoremap <C-l> <C-r><C-p>+
 " TODO: make a fallback to ack or even grep
 nnoremap <Leader>/ :Ag 
 nnoremap <Leader>\ :nohlsearch<CR>
+
+" Un-wrap hard-wrapped text.
+nnoremap <leader>j vipJ
 
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>ge :Gedit<cr>
@@ -248,6 +254,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python2'
 let g:syntastic_python_pylint_args = '--extension-pkg-whitelist=numpy,scipy,sklearn,pandas'
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_aggregate_errors = 1
+" let g:ycm_key_detailed_diagnostics = '<localleader>d'
 
 let g:vim_json_syntax_conceal = 0
 let g:sneak#streak = 1
