@@ -1,61 +1,82 @@
 call plug#begin('~/.vim/plugged')
 
+" Interface plugins
 Plug 'chriskempson/base16-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-" Plug 'davidhalter/jedi-vim'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'Shougo/neocomplete.vim'
-" Plug 'ryanss/vim-hackernews'
 Plug 'bling/vim-airline'
-Plug 'justinmk/vim-sneak'
+Plug 'henrik/vim-indexed-search'
+Plug 'kshenoy/vim-signature'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'Yggdroot/indentLine'
+
+" General functionality
+Plug 'kien/ctrlp.vim'
+Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
 Plug 'reedes/vim-pencil'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', {'do': 'make' }
+Plug 'sudo.vim'
+
+" IDE-like plugins
+Plug 'davidhalter/jedi-vim'
+Plug 'Shougo/neocomplete.vim'
+" Plug 'honza/vim-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'scrooloose/syntastic'
+" Plug 'ludovicchabant/vim-lawrencium'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+Plug 'tpope/vim-commentary'
+Plug 'rking/ag.vim'
+
+" Integration
 Plug 'jamessan/vim-gnupg'
-Plug 'Matt-Deacalion/vim-systemd-syntax'
-"Plug 'vim-latex/vim-latex'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'szw/vim-g'
+
+" Navigation
+Plug 'justinmk/vim-sneak'
 Plug 'rbonvall/vim-textobj-latex', {'for': 'tex'}
 Plug 'bps/vim-textobj-python', {'for': 'python'}
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'glts/vim-textobj-comment'
-Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'scrooloose/syntastic'
-Plug 'sudo.vim'
-Plug 'Yggdroot/indentLine'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-repeat'
-Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-Plug 'freitass/todo.txt-vim'
-" Plug 'ludovicchabant/vim-lawrencium'
-Plug 'kshenoy/vim-signature'
-Plug 'henrik/vim-indexed-search'
-Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
-Plug 'elzr/vim-json'
-Plug 'Raimondi/delimitMate'
-" Plug 'michaeljsmith/vim-indent-object'
-"Plug 'bkad/CamelCaseMotion'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', {'do': 'make' }
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'tpope/vim-unimpaired'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'davidhalter/jedi-vim'
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'szw/vim-g'
+" Plug 'michaeljsmith/vim-indent-object'
+" Plug 'bkad/CamelCaseMotion'
+
+" Filetype plugins
+Plug 'lervag/vimtex', {'for': 'tex'}
+Plug 'elzr/vim-json', {'for': 'json'}
+Plug 'freitass/todo.txt-vim', {'for': 'todo'}
+Plug 'Matt-Deacalion/vim-systemd-syntax'
 
 call plug#end()
 
+" Cosmetic changes
 set shortmess+=I        " Disable welcome message
+set t_Co=256            " 256 color terminal
+let base16colorspace=256
+colorscheme base16-3024
+set background=dark
+set visualbell          " visual X11 bell instead of audible bell
+set title               " set window title to a filename
+set ttyfast             " fast terminal redraw
+set lazyredraw          " don't redraw while executing macros and commands
+set ttimeout
+set ttimeoutlen=10
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Indent related settings
 set autoindent
 set smartindent
 set smarttab
@@ -63,57 +84,50 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=8
 set expandtab           " expand Tab into number of spaces
-set backspace=indent,eol,start  " correct backspace behaviour
+set shiftround          " round spaces number to shiftwidth
 
+" Search settings
 set ignorecase
 set smartcase		" case-sensitive search if a pattern has uppercase symbols
-set t_Co=256            " 256 color terminal
-let base16colorspace=256
-colorscheme base16-3024
-set background=dark
+set hlsearch		" highlight search string
+set incsearch		" search while typing
+set gdefault		" default g flag in search replace
+
+set backspace=indent,eol,start  " correct backspace behaviour
+set nrformats=          " treat all numerals as decimal
+
+" Interface settings
+set scrolloff=3         " minimum number of lines visible near above/below the cursor
 set ruler		" always show the cursor position
 set relativenumber      " relative numbering from the current line
 set number		" line numbering
-set hlsearch		" highlight search string
-set incsearch		" search while typing
 set showmatch           " show matching bracket after insertion
+set noshowmode          " don't how current mode in the status line (there is airline for that)
+set showcmd             " show a command while typing
+set laststatus=2	" always show the status line
+set list                " show trailing whitespaces
+set listchars=tab:▸\ ,trail:¬,nbsp:.,extends:❯,precedes:❮
+
+" Persistence settings
 set hidden		" don't abandon a hidden buffer
 set autoread            " reread file changed outside
-set gdefault		" default g flag in search replace
-set mousehide
-set history=1000
-set visualbell
-set scrolloff=3         " minimum number of lines visible near above/below the cursor
+set autowrite           " autosave buffer when it is hidden
+set autowriteall        " autosave all buffers when switching
 set confirm		" confirm before :w :q and so on set autochdir set title 
 set nobackup
 set nowritebackup
 set noswapfile
-"set viminfo=
-set noshowmode            " show current mode in the status line
-set showcmd             " show a command while typing
-set laststatus=2	" always show the status line
+set history=1000
 set undodir=~/.vim/undo " persistent-undo
 set undofile            " store all persistent-undos in a file
-set autowrite           " autosave buffer when it is hidden
-set autowriteall        " autosave all buffers when switching
-set shiftround          " round spaces number to shiftwidth
-set title               " set window title to a filename
-set nrformats=          " treat all numerals as decimal
-set ttyfast             " fast terminal redraw
-set lazyredraw          " don't redraw while executing macros and commands
+
 if has ('unnamedplus')
     set clipboard=unnamedplus   " use X11 clipboard as unnamed register
 else
     set clipboard=unnamed
 endif
 
-set ttimeout
-set ttimeoutlen=10
-
-" show trailing whitespaces
-set list
-set listchars=tab:▸\ ,trail:¬,nbsp:.,extends:❯,precedes:❮
-
+" Wildmenu
 set wildmenu
 set wildmode=full
 
@@ -128,6 +142,7 @@ set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
 
+""" Keybindings
 let mapleader = "\<Space>"
 
 cnoremap w!! w !sudo tee % >/dev/null
@@ -213,9 +228,6 @@ nnoremap gp `[v`]
 
 set pastetoggle=<Leader>p
 
-set encoding=utf-8
-set fileencoding=utf-8
-
 augroup pencil
 	autocmd!
 	autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
@@ -225,6 +237,7 @@ augroup END
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost ~/notes/* set filetype=markdown
+autocmd BufNewFile,BufReadPost ~/todo/* set filetype=todo
 
 autocmd VimLeave * call system("xsel -ib", getreg())
 
@@ -251,8 +264,8 @@ if (exists('+colorcolumn'))
 endif
 
 " python settings
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = "1"
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#show_call_signatures = "1"
 
 let g:syntastic_python_python_exec = '/usr/bin/python2'
 let g:syntastic_python_pylint_args = '--extension-pkg-whitelist=numpy,scipy,sklearn,pandas'
@@ -261,17 +274,10 @@ let g:syntastic_aggregate_errors = 1
 " let g:ycm_key_detailed_diagnostics = '<localleader>d'
 
 let g:vim_json_syntax_conceal = 0
+
 let g:sneak#streak = 1
 let g:sneak#f_reset = 1
 let g:sneak#t_reset = 1
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
@@ -282,11 +288,9 @@ augroup line_return
         \ endif
 augroup END
 
-" Use neocomplete.
+""" Neocomplete settings
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
 let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 " WTF?
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
@@ -328,7 +332,6 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
-
 if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns = {}
 endif
@@ -340,6 +343,7 @@ let g:neocomplete#force_omni_input_patterns.python =
 \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
+""" Neosnippets settings
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
