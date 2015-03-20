@@ -264,8 +264,8 @@ if (exists('+colorcolumn'))
 endif
 
 " python settings
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#show_call_signatures = "1"
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = "1"
 let g:jedi#auto_initialization = 0
 
 let g:syntastic_python_python_exec = '/usr/bin/python2'
