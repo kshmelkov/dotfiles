@@ -272,7 +272,6 @@ let g:syntastic_python_python_exec = '/usr/bin/python2'
 let g:syntastic_python_pylint_args = '--extension-pkg-whitelist=numpy,scipy,sklearn,pandas'
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_aggregate_errors = 1
-" let g:ycm_key_detailed_diagnostics = '<localleader>d'
 
 let g:vim_json_syntax_conceal = 0
 
