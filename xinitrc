@@ -13,14 +13,14 @@ fi
 
 xrdb -merge ~/.Xresources
 #xrdb -merge ~/.config/base16-xresources/base16-3024
-# start-pulseaudio-x11
+start-pulseaudio-x11
 unclutter &
 setxkbmap -layout us,ru -variant altgr-intl, -option grp:shifts_toggle,terminate:ctrl_alt_bksp,grp_led:caps,caps:ctrl_modifier
-# devmon --no-gui &
-# gnome-keyring
-# nm-applet &
-# mpd
-# feh --randomize --bg-fill ~/wallpapers/*[jpg,png] &
+devmon --no-gui &
+gnome-keyring
+nm-applet &
+mpd
+feh --randomize --bg-fill ~/wallpapers/*[jpg,png] &
 
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
