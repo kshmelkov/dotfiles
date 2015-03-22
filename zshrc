@@ -30,6 +30,9 @@ alias myip='curl ifconfig.me'
 alias path='echo $PATH | tr ":" "\n"'
 alias zc='zcalc'
 
+# disown completely application and ignore its STDOUT, STDERR
+alias -g S='>& /dev/null &!'
+
 alias -s pdf='zathura'
 alias -s djvu='zathura'
 alias -s ps='zathura'
@@ -42,3 +45,7 @@ vpn () { sudo systemctl $1 openvpn@nl2_udp.service }
 alias offscreen='xset dpms force off'
 
 unalias rm
+
+# disable software flow control
+# who needs it today ?
+stty -ixon

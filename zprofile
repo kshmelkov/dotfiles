@@ -36,6 +36,7 @@ export ANT_HOME=/usr/share/apache-ant
 #export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
 export PYTHONPATH=.
 export PYTHONSTARTUP=~/.pythonrc
+export TODOTXT_DEFAULT_ACTION=ls
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
