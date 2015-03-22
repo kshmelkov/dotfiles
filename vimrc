@@ -76,6 +76,8 @@ set ttimeoutlen=10
 set encoding=utf-8
 set fileencoding=utf-8
 
+set infercase           " correct case during autocompletion
+
 " Indent related settings
 set autoindent
 set smartindent
@@ -97,6 +99,7 @@ set backspace=indent,eol,start  " correct backspace behaviour
 set nrformats=          " treat all numerals as decimal
 
 " Interface settings
+set cursorline          " highlight current line
 set scrolloff=3         " minimum number of lines visible near above/below the cursor
 set ruler		" always show the cursor position
 set relativenumber      " relative numbering from the current line
@@ -147,13 +150,14 @@ let mapleader = "\<Space>"
 
 cnoremap w!! w !sudo tee % >/dev/null
 
-nnoremap <Enter> :
+" conflicts with quickfix
+" nnoremap <Enter> :
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :xa<CR>
 nnoremap <Leader>e :b#<CR>
 nnoremap <Leader>x :w<CR>:bd<CR>
-nnoremap <BS> :b#<CR>
+" nnoremap <BS> :b#<CR>
 nnoremap <Leader>r :!./%<CR>
 nnoremap g/ :Google 
 nnoremap <Leader>g :Googlef 
@@ -183,7 +187,7 @@ nnoremap <Leader>f :CtrlP<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
 
-inoremap <C-l> <C-r><C-p>+
+inoremap <C-b> <C-r><C-p>+
 " TODO: make a fallback to ack or even grep
 nnoremap <Leader>/ :Ag 
 nnoremap <Leader>\ :nohlsearch<CR>
@@ -233,6 +237,7 @@ augroup pencil
 	autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
 	autocmd FileType todo call pencil#init({'wrap': 'soft'})
 	autocmd FileType text         call pencil#init()
+        autocmd FileType text         NeoCompleteLock
 augroup END
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
