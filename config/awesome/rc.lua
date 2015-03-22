@@ -329,12 +329,14 @@ globalkeys = awful.util.table.join(
 
     -- Multimedia keys
     -- Mute is treated by BIOS
-    --awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute", false) end),
+    awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute", false) end),
     awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("xbacklight -inc 10", false) end),
     awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("xbacklight -dec 10", false) end),
     awful.key({}, "Pause", function() awful.util.spawn("mpc toggle", false) end),
     awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up 10", false) end),
-    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down 10", false) end)
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down 10", false) end),
+    -- custom hotkeys
+    awful.key({ modkey,     }, "q", function() awful.util.spawn("sflock", false) end)
 )
 
 clientkeys = awful.util.table.join(

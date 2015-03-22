@@ -27,6 +27,6 @@ autocutsel -selection PRIMARY -fork &
 
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
-xautolock -time 20 -locker ~/.lock &
+xautolock -time 20 -locker sflock &
 
 exec awesome
