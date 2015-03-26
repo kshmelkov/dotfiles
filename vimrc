@@ -77,6 +77,9 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 set infercase           " correct case during autocompletion
+set nojoinspaces
+set linebreak           " wrap by words
+set breakindent         " indent wrapped lines
 
 " Indent related settings
 set autoindent
