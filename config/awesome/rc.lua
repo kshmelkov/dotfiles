@@ -64,7 +64,7 @@ local layouts =
 --    awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.floating
+    -- awful.layout.suit.floating
 --    awful.layout.suit.spiral,
 --    awful.layout.suit.spiral.dwindle,
 --    awful.layout.suit.max.fullscreen,
@@ -448,7 +448,7 @@ client.connect_signal("manage", function (c, startup)
             --client.focus = c
         --end
     --end)
-
+    c.size_hints_honor = false
     if not startup then
         -- Set the windows at the slave,
         -- i.e. put it at the end of others instead of setting it master.
