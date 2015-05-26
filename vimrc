@@ -58,6 +58,9 @@ Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'freitass/todo.txt-vim', {'for': 'todo'}
 Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'derekwyatt/vim-scala', {'for': 'scala'}
+
+Plug 'Shougo/vimfiler.vim'
 
 call plug#end()
 
@@ -75,11 +78,14 @@ set ttimeout
 set ttimeoutlen=10
 set encoding=utf-8
 set fileencoding=utf-8
+syntax sync minlines=256    " Update syntax highlighting for more lines increased scrolling performance
+set synmaxcol=256           " Don't syntax highlight long lines
 
 set infercase           " correct case during autocompletion
-set nojoinspaces
+set nojoinspaces        " Use only 1 space after "." when joining lines instead of 2
 set linebreak           " wrap by words
 set breakindent         " indent wrapped lines
+set nostartofline       " Don't reset cursor to start of line when moving around
 
 " Indent related settings
 set autoindent
@@ -113,6 +119,9 @@ set showcmd             " show a command while typing
 set laststatus=2	" always show the status line
 set list                " show trailing whitespaces
 set listchars=tab:▸\ ,trail:¬,nbsp:.,extends:❯,precedes:❮
+set wrap " Enable wrapping
+set showbreak=↪\  " Character to precede line wraps
+set switchbuf=useopen   " Jump to the first open window that contains the specified buffer
 
 " Persistence settings
 set hidden		" don't abandon a hidden buffer
@@ -153,6 +162,15 @@ let mapleader = "\<Space>"
 
 cnoremap w!! w !sudo tee % >/dev/null
 
+" Expand %% to current directory
+" http://vimcasts.org/e/14
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" Set <c-n> and <c-p> to act like Up/Down so will filter command history
+" Practical Vim p.69
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
+
 " conflicts with quickfix
 " nnoremap <Enter> :
 
@@ -164,7 +182,12 @@ nnoremap <Leader>x :w<CR>:bd<CR>
 nnoremap <Leader>r :!./%<CR>
 nnoremap g/ :Google 
 nnoremap <Leader>g :Googlef 
+
 nnoremap Y y$
+nnoremap <F1> <nop>
+
+" Toggle current and alternate buffers
+nnoremap <leader><leader> <c-^>
 
 nnoremap <C-J> :bnext<CR>
 nnoremap <C-K> :bprevious<CR>
@@ -219,12 +242,17 @@ xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
 
+" Disable arrow keys in normal mode and insert mode
 noremap <Left> <NOP>
 noremap <Down> <NOP>
 noremap <Up> <NOP>
 noremap <Right> <NOP>
 noremap <PageUp> <NOP>
 noremap <PageDown> <NOP>
+inoremap <Left> <NOP>
+inoremap <Down> <NOP>
+inoremap <Up> <NOP>
+inoremap <Right> <NOP>
 
 " Use sane PCRE regexes.
 nnoremap / /\v
@@ -273,7 +301,7 @@ endif
 
 " python settings
 let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = "1"
+let g:jedi#show_call_signatures = "0"
 let g:jedi#auto_initialization = 0
 
 let g:syntastic_python_python_exec = '/usr/bin/python2'
@@ -367,5 +395,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=2 concealcursor=i
+  set conceallevel=2
+  set concealcursor=nc
 endif
