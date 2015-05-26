@@ -20,6 +20,8 @@ devmon --no-gui &
 gnome-keyring
 nm-applet &
 mpd
+mpc random
+mpc repeat
 feh --randomize --bg-fill ~/wallpapers/*[jpg,png] &
 
 autocutsel -fork &
