@@ -33,7 +33,7 @@ fi
 #
 
 export ANT_HOME=/usr/share/apache-ant
-#export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export PYTHONPATH=.
 export PYTHONSTARTUP=~/.pythonrc
 export TODOTXT_DEFAULT_ACTION=ls

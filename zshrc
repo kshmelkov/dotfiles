@@ -28,7 +28,9 @@ alias nh='unset HISTFILE'
 alias t='todo.sh'
 alias myip='curl ifconfig.me'
 alias path='echo $PATH | tr ":" "\n"'
+alias cal='cal -m -3'
 alias zc='zcalc'
+alias ывсм='sdcv'
 
 # disown completely application and ignore its STDOUT, STDERR
 alias -g S='>& /dev/null &!'
@@ -39,8 +41,6 @@ alias -s ps='zathura'
 alias -s html='firefox'
 
 alias jrnl=' jrnl'
-
-vpn () { sudo systemctl $1 openvpn@nl2_udp.service }
 
 alias offscreen='xset dpms force off'
 
