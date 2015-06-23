@@ -33,6 +33,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'gpg' \
+  'ssh' \
   'rsync' \
   'syntax-highlighting' \
   'history-substring-search' \
@@ -113,7 +114,7 @@ zstyle ':prezto:module:prompt' theme 'pure'
 #
 
 # Set the SSH identities to load into the agent.
-# zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_INRIA'
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_INRIA'
 
 #
 # Syntax Highlighting
