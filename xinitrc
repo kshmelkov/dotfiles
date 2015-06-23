@@ -23,6 +23,7 @@ mpd
 mpc random
 mpc repeat
 feh --randomize --bg-fill ~/wallpapers/*[jpg,png] &
+redshift -l 48.853:2.34 -t 6000:4000 &
 
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
