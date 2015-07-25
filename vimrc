@@ -171,14 +171,16 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 cnoremap <c-p> <up>
 cnoremap <c-n> <down>
 
-" conflicts with quickfix
-" nnoremap <Enter> :
+nnoremap <Enter> :
+" avoid conflicts with quickfix and command-line window
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :xa<CR>
-nnoremap <Leader>e :b#<CR>
+" nnoremap <Leader>e :b#<CR>
 nnoremap <Leader>x :w<CR>:bd<CR>
-" nnoremap <BS> :b#<CR>
+nnoremap <BS> :FixWhitespace<CR>
 nnoremap <Leader>r :!./%<CR>
 nnoremap g/ :Google 
 nnoremap <Leader>g :Googlef 
