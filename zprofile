@@ -38,6 +38,11 @@ export PYTHONPATH=.
 export PYTHONSTARTUP=~/.pythonrc
 export TODOTXT_DEFAULT_ACTION=ls
 
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/devel
+export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 

@@ -10,6 +10,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+source /usr/bin/virtualenvwrapper_lazy.sh
+# source /etc/profile.d/fzf-extras.zsh
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
@@ -18,7 +21,7 @@ alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)
 alias q='exit'
 alias й='exit'
 alias pl='mpv -shuffle **/*.mp3'
-alias imv='feh -B checks -FZ --force-aliasing --keep-zoom-vp'
+alias imv='feh -d -B checks -FZ --force-aliasing --keep-zoom-vp'
 alias devmon='devmon -g'
 alias feh='feh --fontpath /usr/share/fonts/TTF --font DejaVuSansMono/26'
 alias cm='cryptmount'
@@ -31,6 +34,7 @@ alias path='echo $PATH | tr ":" "\n"'
 alias cal='cal -m -3'
 alias zc='zcalc'
 alias ывсм='sdcv'
+alias psc='pass show -c'
 
 # disown completely application and ignore its STDOUT, STDERR
 alias -g S='>& /dev/null &!'
