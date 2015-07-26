@@ -31,10 +31,12 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'fasd' \
   'completion' \
   'gpg' \
   'ssh' \
   'rsync' \
+  'python' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
@@ -86,6 +88,9 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 # Prompt
 #
+
+# %v - virtualenv name.
+# zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.

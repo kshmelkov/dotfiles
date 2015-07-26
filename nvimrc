@@ -243,7 +243,7 @@ nnoremap <Leader>m :CtrlPMRUFiles<CR>
 inoremap <C-b> <C-r><C-p>+
 " TODO: make a fallback to ack or even grep
 nnoremap <Leader>/ :Ag
-nnoremap <Leader>\ :nohlsearch<CR>
+nnoremap <silent> <Leader>\ :nohlsearch<CR>
 
 " Un-wrap hard-wrapped text.
 nnoremap <leader>j vipJ

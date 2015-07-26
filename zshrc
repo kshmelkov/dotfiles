@@ -10,9 +10,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-source /usr/bin/virtualenvwrapper_lazy.sh
+# source /usr/bin/virtualenvwrapper_lazy.sh
 source ~/.fzf.zsh
-eval "$(fasd --init auto)"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
