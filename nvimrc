@@ -178,7 +178,7 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-nnoremap <A-q> :bd<CR>
+nnoremap <A-d> :bd<CR>
 
 nnoremap <A-Tab> <C-W>
 tnoremap <A-Tab> <C-\><C-n>
@@ -201,6 +201,7 @@ nnoremap <BS> :FixWhitespace<CR>
 nnoremap <Leader>r :!./%<CR>
 nnoremap g/ :Google
 nnoremap <Leader>g :Googlef
+nnoremap <Leader>s :term<CR>
 
 " X11 clipboard mappings
 nnoremap <Leader>y "+y
@@ -209,6 +210,8 @@ nnoremap <Leader>d "+d
 vnoremap <Leader>d "+d
 nnoremap <Leader>p "+p
 vnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+vnoremap <Leader>P "+P
 
 nnoremap Y y$
 nnoremap <F1> <nop>
