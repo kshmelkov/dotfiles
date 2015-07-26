@@ -11,7 +11,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 source /usr/bin/virtualenvwrapper_lazy.sh
-# source /etc/profile.d/fzf-extras.zsh
+source ~/.fzf.zsh
+eval "$(fasd --init auto)"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
@@ -26,7 +27,7 @@ alias devmon='devmon -g'
 alias feh='feh --fontpath /usr/share/fonts/TTF --font DejaVuSansMono/26'
 alias cm='cryptmount'
 alias m='mpv'
-alias f='feh -FZd --draw-tinted'
+alias img='feh -FZd --draw-tinted'
 alias nh='unset HISTFILE'
 alias t='todo.sh'
 alias myip='curl ifconfig.me'
@@ -56,3 +57,4 @@ stty -ixon
 
 transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
 tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }; alias transfer=transfer 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

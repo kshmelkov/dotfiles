@@ -37,6 +37,7 @@ Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'tpope/vim-commentary'
 Plug 'rking/ag.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 " Integration
 Plug 'jamessan/vim-gnupg'
@@ -120,7 +121,6 @@ set switchbuf=useopen   " Jump to the first open window that contains the specif
 
 " Persistence settings
 set hidden		" don't abandon a hidden buffer
-" set autoread            " reread file changed outside
 set autowrite           " autosave buffer when it is hidden
 set autowriteall        " autosave all buffers when switching
 set confirm		" confirm before :w :q and so on set autochdir set title
@@ -145,6 +145,9 @@ set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
+
+" solve problem with cyrillic in Normal mode
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 """ Keybindings
 let mapleader = "\<Space>"
@@ -174,6 +177,21 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+nnoremap <A-q> :bd<CR>
+
+nnoremap <A-Tab> <C-W>
+tnoremap <A-Tab> <C-\><C-n>
+
+nnoremap <silent> <A-1> :b1<CR>
+nnoremap <silent> <A-2> :b2<CR>
+nnoremap <silent> <A-3> :b3<CR>
+nnoremap <silent> <A-4> :b4<CR>
+nnoremap <silent> <A-5> :b5<CR>
+nnoremap <silent> <A-6> :b6<CR>
+nnoremap <silent> <A-7> :b7<CR>
+nnoremap <silent> <A-8> :b8<CR>
+nnoremap <silent> <A-9> :b9<CR>
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :xa<CR>
