@@ -31,8 +31,8 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
-  'fasd' \
   'completion' \
+  'fasd' \
   'gpg' \
   'ssh' \
   'rsync' \
