@@ -12,6 +12,7 @@ fi
 
 # source /usr/bin/virtualenvwrapper_lazy.sh
 source ~/.fzf.zsh
+source /etc/zsh/aws_complete.zsh
 
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
 
