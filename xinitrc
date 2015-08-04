@@ -31,5 +31,6 @@ redshift -l 48.853:2.34 -t 6000:4000 &
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
 xautolock -time 20 -locker sflock &
+syndaemon -t -k -i 0.5 -d
 
 exec awesome
