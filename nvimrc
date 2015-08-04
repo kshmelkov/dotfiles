@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.nvim/plugged')
 
 " Interface plugins
 Plug 'chriskempson/base16-vim'
@@ -9,8 +9,8 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'Yggdroot/indentLine'
 
 " General functionality
-Plug 'kien/ctrlp.vim'
-Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-speeddating'
@@ -22,21 +22,20 @@ Plug 'Shougo/vimproc.vim', {'do': 'make' }
 Plug 'sudo.vim'
 
 " IDE-like plugins
-Plug 'davidhalter/jedi-vim'
-" Plug 'honza/vim-snippets'
+" Plug 'davidhalter/jedi-vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'benekastah/neomake'
-" Plug 'scrooloose/syntastic'
-" Plug 'ludovicchabant/vim-lawrencium'
+Plug 'ludovicchabant/vim-lawrencium'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'tpope/vim-commentary'
-Plug 'rking/ag.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 " Integration
@@ -64,6 +63,8 @@ Plug 'derekwyatt/vim-scala', {'for': 'scala'}
 
 Plug 'Shougo/vimfiler.vim'
 
+Plug 'ryanss/vim-hackernews'
+
 call plug#end()
 
 " Cosmetic changes
@@ -80,6 +81,8 @@ set ttimeoutlen=10
 set fileencoding=utf-8
 syntax sync minlines=256    " Update syntax highlighting for more lines increased scrolling performance
 set synmaxcol=256           " Don't syntax highlight long lines
+set splitbelow
+set splitright
 
 set infercase           " correct case during autocompletion
 set nojoinspaces        " Use only 1 space after "." when joining lines instead of 2
@@ -103,7 +106,7 @@ set gdefault		" default g flag in search replace
 set nrformats=          " treat all numerals as decimal
 
 " Interface settings
-set mouse=
+set mouse=n
 set cursorline          " highlight current line
 set scrolloff=3         " minimum number of lines visible near above/below the cursor
 set ruler		" always show the cursor position
@@ -164,6 +167,7 @@ cnoremap <c-p> <up>
 cnoremap <c-n> <down>
 
 nnoremap <Enter> :
+xnoremap <Enter> :
 " avoid conflicts with quickfix and command-line window
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
@@ -244,8 +248,11 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
 
 inoremap <C-b> <C-r><C-p>+
-" TODO: make a fallback to ack or even grep
-nnoremap <Leader>/ :Ag
+nmap <leader>/ <plug>(Grepper)
+xmap <leader>/ <plug>(Grepper)
+cmap <leader>/ <plug>(GrepperNext)
+nmap gs        <plug>(GrepperMotion)
+xmap gs        <plug>(GrepperMotion)
 nnoremap <silent> <Leader>\ :nohlsearch<CR>
 
 " Un-wrap hard-wrapped text.
@@ -272,13 +279,26 @@ xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
 
-" Disable arrow keys in normal mode and insert mode
-noremap <Left> <NOP>
-noremap <Down> <NOP>
-noremap <Up> <NOP>
-noremap <Right> <NOP>
-noremap <PageUp> <NOP>
-noremap <PageDown> <NOP>
+nnoremap <Up> <C-W>+
+nnoremap <Down> <C-W>-
+nnoremap <Left> <C-W><
+nnoremap <Right> <C-W>>
+
+" nnoremap <S-Up> <C-W>K
+" nnoremap <S-Down> <C-W>J
+" nnoremap <S-Left> <C-W>H
+" nnoremap <S-Right> <C-W>L
+
+nnoremap <M-Up> <C-W>_
+nnoremap <M-Down> <C-W>=
+nnoremap <M-Left> <C-W>=
+nnoremap <M-Right> <C-W><Bar>
+
+" Disable arrow keys in insert mode
+nnoremap <PageUp> <NOP>
+nnoremap <PageDown> <NOP>
+inoremap <PageUp> <NOP>
+inoremap <PageDown> <NOP>
 inoremap <Left> <NOP>
 inoremap <Down> <NOP>
 inoremap <Up> <NOP>
@@ -328,9 +348,9 @@ if (exists('+colorcolumn'))
 endif
 
 " python settings
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = "0"
-let g:jedi#auto_initialization = 0
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#show_call_signatures = "0"
+" let g:jedi#auto_initialization = 0
 
 let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pep8']  " flake8, pylint
 let g:neomake_python_python_exe = '/usr/bin/python2'
@@ -362,9 +382,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
+" autocmd FileType python setlocal omnifunc=jedi#completions
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
 
 """ Neosnippets settings
 " Plugin key-mappings.
