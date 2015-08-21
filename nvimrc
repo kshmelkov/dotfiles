@@ -7,9 +7,11 @@ Plug 'henrik/vim-indexed-search'
 Plug 'kshenoy/vim-signature'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Yggdroot/indentLine'
+Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/promptline.vim'
 
 " General functionality
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-unimpaired'
@@ -17,9 +19,10 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', {'do': 'make' }
 Plug 'sudo.vim'
+" Plug 'Shougo/unite.vim'
+" Plug 'Shougo/vimproc.vim', {'do': 'make' }
+" Plug 'Shougo/vimfiler.vim'
 
 " IDE-like plugins
 " Plug 'davidhalter/jedi-vim'
@@ -37,11 +40,14 @@ Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'tpope/vim-commentary'
 Plug 'mhinz/vim-grepper'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+" Plug 'thinca/vim-quickrun' "???
 
 " Integration
 Plug 'jamessan/vim-gnupg'
-Plug 'tmux-plugins/vim-tmux'
 Plug 'szw/vim-g'
+" Plug 'tmux-plugins/vim-tmux-focus-events'  " don't work on neovim
+Plug 'christoomey/vim-tmux-navigator'
+" Plug 'cazador481/fakeclip.neovim'  " should work, but...
 
 " Navigation
 Plug 'justinmk/vim-sneak'
@@ -51,6 +57,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'glts/vim-textobj-comment'
 Plug 'jeetsukumaran/vim-indentwise'
+Plug 'tommcdo/vim-exchange'
 " Plug 'michaeljsmith/vim-indent-object'
 " Plug 'bkad/CamelCaseMotion'
 
@@ -60,10 +67,8 @@ Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'freitass/todo.txt-vim', {'for': 'todo'}
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'derekwyatt/vim-scala', {'for': 'scala'}
-
-Plug 'Shougo/vimfiler.vim'
-
-Plug 'ryanss/vim-hackernews'
+Plug 'tmux-plugins/vim-tmux'
+" Plug 'JuliaLang/julia-vim', {'for': 'julia'}  " very strange bugs
 
 call plug#end()
 
@@ -83,6 +88,7 @@ syntax sync minlines=256    " Update syntax highlighting for more lines increase
 set synmaxcol=256           " Don't syntax highlight long lines
 set splitbelow
 set splitright
+set nohlsearch
 
 set infercase           " correct case during autocompletion
 set nojoinspaces        " Use only 1 space after "." when joining lines instead of 2
@@ -173,39 +179,33 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 
 " navigation between splits and terminals
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <A-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <A-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <A-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <A-l> :TmuxNavigateRight<CR>
+nnoremap <silent> <A-q> :TmuxNavigatePrevious<CR>
+
+tnoremap <silent> <A-h> <C-\><C-n>:TmuxNavigateLeft<CR>
+tnoremap <silent> <A-j> <C-\><C-n>:TmuxNavigateDown<CR>
+tnoremap <silent> <A-k> <C-\><C-n>:TmuxNavigateUp<CR>
+tnoremap <silent> <A-l> <C-\><C-n>:TmuxNavigateRight<CR>
+tnoremap <silent> <A-q> <C-\><C-n>:TmuxNavigatePrevious<CR>
 
 nnoremap <A-d> :bd<CR>
 
 nnoremap <A-Tab> <C-W>
 tnoremap <A-Tab> <C-\><C-n>
 
-nnoremap <silent> <A-1> :b1<CR>
-nnoremap <silent> <A-2> :b2<CR>
-nnoremap <silent> <A-3> :b3<CR>
-nnoremap <silent> <A-4> :b4<CR>
-nnoremap <silent> <A-5> :b5<CR>
-nnoremap <silent> <A-6> :b6<CR>
-nnoremap <silent> <A-7> :b7<CR>
-nnoremap <silent> <A-8> :b8<CR>
-nnoremap <silent> <A-9> :b9<CR>
-
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :xa<CR>
-" nnoremap <Leader>e :b#<CR>
 nnoremap <Leader>x :w<CR>:bd<CR>
 nnoremap <BS> :FixWhitespace<CR>
 nnoremap <Leader>r :!./%<CR>
-nnoremap g/ :Google
-nnoremap <Leader>g :Googlef
-nnoremap <Leader>s :term<CR>
+nnoremap g/ :Google 
+nnoremap <Leader>g :Googlef 
+" nnoremap <Leader>s :term<CR>
 
 " X11 clipboard mappings
 nnoremap <Leader>y "+y
@@ -219,6 +219,7 @@ vnoremap <Leader>P "+P
 
 nnoremap Y y$
 nnoremap <F1> <nop>
+inoremap <F1> <nop>
 
 " Toggle current and alternate buffers
 nnoremap <leader><leader> <c-^>
@@ -242,10 +243,6 @@ nnoremap <Leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>o :Explore<CR>
 nnoremap <leader>v :e $MYVIMRC<CR>
-
-nnoremap <Leader>f :CtrlP<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap <Leader>m :CtrlPMRUFiles<CR>
 
 inoremap <C-b> <C-r><C-p>+
 nmap <leader>/ <plug>(Grepper)
@@ -311,17 +308,24 @@ vnoremap / /\v
 " visual reselect of just pasted
 nnoremap gp `[v`]
 
-augroup pencil
-	autocmd!
-	autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
-	autocmd FileType todo call pencil#init({'wrap': 'soft'})
-	autocmd FileType text         call pencil#init()
-        autocmd FileType text let b:deoplete_disable_auto_complete = 1
-augroup END
-
+autocmd BufNewFile,BufReadPost /dev/shm/pass* set filetype=password
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost ~/notes/* set filetype=markdown
 autocmd BufNewFile,BufReadPost ~/todo/* set filetype=todo
+
+augroup pencil
+	autocmd!
+	autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
+	autocmd FileType todo         NoPencil
+	autocmd FileType text         call pencil#init()
+	autocmd FileType password     NoPencil
+augroup END
+
+augroup deoplete
+        autocmd FileType text let b:deoplete_disable_auto_complete = 1
+        autocmd FileType password let b:deoplete_disable_auto_complete = 1
+        autocmd FileType mail let b:deoplete_disable_auto_complete = 1
+augroup END
 
 autocmd VimLeave * call system("xsel -ib", getreg())
 
@@ -331,14 +335,21 @@ let g:tex_flavor = "latex"
 
 let g:airline_theme = 'base16'
 let g:airline_section_x = '%{PencilMode()}'
+
 " buffers as pseudo-tabs
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 " display only filename in tab title
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tmuxline#enabled = 0
+
+let g:airline_powerline_fonts = 1
+let g:tmuxline_powerline_separators = 1
+let g:tmuxline_theme = 'airline'
+let g:tmuxline_preset = 'minimal'
 
 let g:indentLine_char = "┆"
 
-let g:ctrlp_user_command = 'ag %s -i -l --nocolor -g ""'
+" let g:ctrlp_user_command = 'ag %s -i -l --nocolor -g ""'
 
 " highlight 80th column
 if (exists('+colorcolumn'))
@@ -355,6 +366,10 @@ endif
 let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pep8']  " flake8, pylint
 let g:neomake_python_python_exe = '/usr/bin/python2'
 autocmd! BufWritePost * Neomake
+
+" let g:latex_to_unicode_tab = 0
+" let g:latex_to_unicode_suggestions = 0
+" let g:latex_to_unicode_auto = 0
 
 let g:vim_json_syntax_conceal = 0
 
@@ -411,3 +426,37 @@ inoremap <expr><C-e>  deoplete#mappings#cancel_popup()
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+
+nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> <Leader>m :FZFMru<CR>
+nnoremap <silent> <Leader>b :call fzf#run({
+    \   'source':  reverse(<sid>buflist()),
+    \   'sink':    function('<sid>bufopen'),
+    \   'options': '+m',
+    \   'down':    len(<sid>buflist()) + 2
+    \ })<CR>
+
+function! s:buflist()
+    redir => ls
+    silent ls
+    redir END
+    return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+    execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+command! FZFMru call fzf#run({
+    \ 'source':  reverse(s:all_files()),
+    \ 'sink':    'edit',
+    \ 'options': '-m -x +s',
+    \ 'down':    '40%' })
+
+function! s:all_files()
+    return extend(
+        \ filter(copy(v:oldfiles),
+        \        "v:val !~ 'fugitive:\\|NERD_tree\\|^/tmp/\\|.git/'"),
+        \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
+
+endfunction
