@@ -9,6 +9,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'Yggdroot/indentLine'
 Plug 'edkolev/tmuxline.vim'
 " Plug 'edkolev/promptline.vim'
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
 " General functionality
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -47,7 +48,9 @@ Plug 'jamessan/vim-gnupg'
 Plug 'szw/vim-g'
 " Plug 'tmux-plugins/vim-tmux-focus-events'  " don't work on neovim
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
 " Plug 'cazador481/fakeclip.neovim'  " should work, but...
+Plug 'ledger/vim-ledger'
 
 " Navigation
 Plug 'justinmk/vim-sneak'
@@ -172,6 +175,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 cnoremap <c-p> <up>
 cnoremap <c-n> <down>
 
+nnoremap <silent> <Esc> :up<CR>
+
 nnoremap <Enter> :
 xnoremap <Enter> :
 " avoid conflicts with quickfix and command-line window
@@ -193,19 +198,16 @@ tnoremap <silent> <A-k> <C-\><C-n>:TmuxNavigateUp<CR>
 tnoremap <silent> <A-l> <C-\><C-n>:TmuxNavigateRight<CR>
 tnoremap <silent> <A-q> <C-\><C-n>:TmuxNavigatePrevious<CR>
 
-nnoremap <A-d> :bd<CR>
-
 nnoremap <A-Tab> <C-W>
 tnoremap <A-Tab> <C-\><C-n>
 
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :xa<CR>
-nnoremap <Leader>x :w<CR>:bd<CR>
+nnoremap <silent> <Leader>w :up<CR>
+nnoremap <silent> <Leader>q :xa<CR>
+nnoremap <silent> <Leader>x :Sayonara<CR>
 nnoremap <BS> :FixWhitespace<CR>
 nnoremap <Leader>r :!./%<CR>
-nnoremap g/ :Google 
+nnoremap g/ :Google
 nnoremap <Leader>g :Googlef 
-" nnoremap <Leader>s :term<CR>
 
 " X11 clipboard mappings
 nnoremap <Leader>y "+y
@@ -244,6 +246,9 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>o :Explore<CR>
 nnoremap <leader>v :e $MYVIMRC<CR>
 
+"" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+
 inoremap <C-b> <C-r><C-p>+
 nmap <leader>/ <plug>(Grepper)
 xmap <leader>/ <plug>(Grepper)
@@ -260,6 +265,10 @@ nnoremap <Leader>ge :Gedit<cr>
 nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gc :Gcommit<cr>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
 
 "replace 'f' with 1-char Sneak
 nmap f <Plug>Sneak_f
@@ -312,6 +321,8 @@ autocmd BufNewFile,BufReadPost /dev/shm/pass* set filetype=password
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost ~/notes/* set filetype=markdown
 autocmd BufNewFile,BufReadPost ~/todo/* set filetype=todo
+
+autocmd BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
 
 augroup pencil
 	autocmd!
