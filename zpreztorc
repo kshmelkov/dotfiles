@@ -1,11 +1,4 @@
 #
-# Sets Prezto options.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-#
 # General
 #
 
@@ -36,6 +29,7 @@ zstyle ':prezto:load' pmodule \
   'gpg' \
   'ssh' \
   'rsync' \
+  'archive' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt' \

@@ -11,10 +11,11 @@ fi
 
 export ANT_HOME=/usr/share/apache-ant
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export GOPATH=~/.go
 export PYTHONPATH=.
 export PYTHONSTARTUP=~/.pythonrc
 export TODOTXT_DEFAULT_ACTION=ls
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH:$GOPATH/bin"
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/devel
@@ -56,3 +57,5 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
+
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
