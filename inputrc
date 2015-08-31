@@ -11,3 +11,10 @@ set keymap vi-insert
 "\e[B": history-search-forward
 $endif
 set bell-style visible
+set enable-keypad on
+
+# disable/enable 8bit input
+set meta-flag on
+set input-meta on
+set output-meta off
+set convert-meta on
