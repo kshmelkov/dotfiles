@@ -79,8 +79,8 @@ call plug#end()
 set shortmess+=I        " Disable welcome message
 set t_Co=256            " 256 color terminal
 let base16colorspace=256
-colorscheme base16-3024
 set background=dark
+colorscheme base16-3024
 set visualbell          " visual X11 bell instead of audible bell
 set title               " set window title to a filename
 set lazyredraw          " don't redraw while executing macros and commands
@@ -223,7 +223,7 @@ nnoremap Y y$
 nnoremap <F1> <nop>
 inoremap <F1> <nop>
 
-" Toggle current and alternate buffers
+" toggle current and alternate buffers
 nnoremap <leader><leader> <c-^>
 
 nnoremap <C-J> :bnext<CR>
@@ -232,6 +232,9 @@ nnoremap <C-K> :bprevious<CR>
 " restore classical Q behaviour
 nnoremap Q gqap
 vnoremap Q gq
+
+" un-wrap hard-wrapped text.
+nnoremap <leader>j vipJ
 
 " sane movements in wrap mode
 noremap j gj
@@ -246,7 +249,7 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>o :Explore<CR>
 nnoremap <leader>v :e $MYVIMRC<CR>
 
-"" Set working directory
+" set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
 inoremap <C-b> <C-r><C-p>+
@@ -256,9 +259,6 @@ cmap <leader>/ <plug>(GrepperNext)
 nmap gs        <plug>(GrepperMotion)
 xmap gs        <plug>(GrepperMotion)
 nnoremap <silent> <Leader>\ :nohlsearch<CR>
-
-" Un-wrap hard-wrapped text.
-nnoremap <leader>j vipJ
 
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>ge :Gedit<cr>
