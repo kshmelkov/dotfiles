@@ -11,6 +11,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+xrandr --dpi 210
 xrdb -merge ~/.Xresources
 start-pulseaudio-x11
 unclutter &
@@ -22,14 +23,11 @@ mpd
 mpc random
 mpc repeat
 feh --randomize --bg-fill ~/wallpapers/*[jpg,png] &
-redshift -l 48.853:2.34 -t 6000:4000 &
-
-# autocutsel -fork &
-# autocutsel -selection PRIMARY -fork &
+redshift -l 45.2002:5.7222 -t 6000:4000 &
 
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
 xautolock -time 20 -locker sflock &
 syndaemon -t -k -i 0.5 -d
 
-exec awesome
+exec i3
