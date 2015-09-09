@@ -1,7 +1,8 @@
+URxvt.font: xft:InconsolataLGC:size=8
 Xft.dpi: 210
 Xft.lcdfilter: lcddefault
 Xft.autohint: false
-Xft.hintstyle: hintfull
+Xft.hintstyle: hintslight
 Xft.hinting: true
 Xft.antialias: true
 Xft.rgba: rgb
