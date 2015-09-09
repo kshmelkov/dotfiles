@@ -36,9 +36,7 @@ alias psc='pass show -c'
 alias py='python'
 alias py2='python2'
 
-alias gs='git status -sb'
-alias gc='git commit'
-alias gl='git log'
+alias g='git'
 
 # disown completely application and ignore its STDOUT, STDERR
 alias -g S='>& /dev/null &!'
