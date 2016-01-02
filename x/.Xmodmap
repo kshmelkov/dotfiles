@@ -1,0 +1,9 @@
+clear Control
+keycode 115 = Control_L
+add Control = Control_R End Control_L
+
+keycode 110 = ISO_Next_Group
+
+! clear Mod4
+! keycode 110 = Super_L
+! add Mod4 = Super_R Home Super_L
