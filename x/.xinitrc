@@ -31,6 +31,8 @@ xcape -e 'Control_L=Escape'
 xautolock -time 20 -locker sflock &
 syndaemon -t -k -i 0.5 -d
 
+# pasystray &
+
 # emacs --daemon &
 
 exec i3
