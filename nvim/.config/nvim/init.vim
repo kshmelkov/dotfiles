@@ -19,7 +19,7 @@ Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
 " General functionality
 " Plug 'ctrlpvim/ctrlp.vim'
-Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
+" Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-speeddating'
@@ -28,6 +28,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-characterize'
 Plug 'Raimondi/delimitMate'
 Plug 'sudo.vim'
+Plug 'romainl/vim-qf'
+Plug 'mbbill/undotree'
 " Plug 'Shougo/unite.vim'
 " Plug 'Shougo/vimproc.vim', {'do': 'make' }
 " Plug 'Shougo/vimfiler.vim'
@@ -44,6 +46,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 Plug 'tpope/vim-commentary'
 Plug 'mhinz/vim-grepper'
@@ -271,7 +274,7 @@ nnoremap <Leader>n :e ~/notes/
 " leader enter
 
 nnoremap <Leader>t :TagbarToggle<CR>
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>o :Explore<CR>
 nnoremap <leader>v :e $MYVIMRC<CR>
 
