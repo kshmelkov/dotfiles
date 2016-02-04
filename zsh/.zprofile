@@ -18,6 +18,7 @@ export PYTHONSTARTUP=~/.pythonrc
 export TODOTXT_DEFAULT_ACTION=ls
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH:$GOPATH/bin"
 export LEDGER_FILE='~/money.ldg'
+export PYTHONDOCS=/usr/share/doc/python2/html/
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/devel
