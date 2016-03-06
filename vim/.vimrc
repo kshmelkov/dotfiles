@@ -2,23 +2,24 @@ call plug#begin('~/.vim/plugged')
 
 " Interface plugins
 Plug 'chriskempson/base16-vim'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'henrik/vim-indexed-search'
 Plug 'kshenoy/vim-signature'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Yggdroot/indentLine'
 
 " General functionality
-Plug 'kien/ctrlp.vim'
-Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mbbill/undotree'
 Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', {'do': 'make' }
+" Plug 'Shougo/unite.vim'
+" Plug 'Shougo/vimproc.vim', {'do': 'make' }
 Plug 'sudo.vim'
 
 " IDE-like plugins
@@ -56,11 +57,10 @@ Plug 'jeetsukumaran/vim-indentwise'
 " Filetype plugins
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'elzr/vim-json', {'for': 'json'}
-Plug 'freitass/todo.txt-vim', {'for': 'todo'}
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'derekwyatt/vim-scala', {'for': 'scala'}
 
-Plug 'Shougo/vimfiler.vim'
+" Plug 'Shougo/vimfiler.vim'
 
 call plug#end()
 
