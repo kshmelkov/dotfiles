@@ -8,7 +8,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Interface plugins
 Plug 'chriskempson/base16-vim'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'henrik/vim-indexed-search'
 Plug 'kshenoy/vim-signature'
 Plug 'bronson/vim-trailing-whitespace'
@@ -225,6 +226,7 @@ nnoremap <Leader>> :SidewaysRight<CR>
 nnoremap <A-Tab> <C-W>
 tnoremap <A-Tab> <C-\><C-n>
 
+nnoremap <Leader><Tab> <C-^>
 nnoremap <Leader>s :set spell<CR>:set spelllang=
 nnoremap <silent> <Leader>w :up<CR>
 nnoremap <silent> <Leader>q :xa<CR>
@@ -268,7 +270,7 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-nnoremap <Leader>n :e ~/notes/
+nnoremap <Leader>n :e ~/org/
 " TODO
 " nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 " leader enter
@@ -301,10 +303,10 @@ nnoremap <Leader>ge :Gedit<cr>
 nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gc :Gcommit<cr>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
+nnoremap <Leader>gsh :Gpush<CR>
+nnoremap <Leader>gll :Gpull<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gd :Gvdiff<CR>
 
 "replace 'f' with 1-char Sneak
 nmap f <Plug>Sneak_f
@@ -351,7 +353,8 @@ nnoremap / /\v
 vnoremap / /\v
 
 " visual reselect of just pasted
-nnoremap gp `[v`]
+" TODO very interesting default command
+" nnoremap gp `[v`]
 
 autocmd BufNewFile,BufReadPost /dev/shm/pass* set filetype=password
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -396,6 +399,8 @@ let g:tmuxline_theme = 'airline'
 let g:tmuxline_preset = 'minimal'
 
 let g:indentLine_char = "┆"
+
+" let g:vim_fakeclip_tmux_plus=0
 
 " let g:ctrlp_user_command = 'ag %s -i -l --nocolor -g ""'
 
@@ -458,22 +463,22 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " TODO correct conceal for tex files
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=2
+  set conceallevel=0
   set concealcursor=nc
 endif
 
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" " inoremap <expr><Tab>  deoplete#mappings#manual_complete()
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><Tab>  deoplete#mappings#manual_complete()
 
-" inoremap <expr><C-y>  deoplete#mappings#close_popup()
-" inoremap <expr><C-e>  deoplete#mappings#cancel_popup()
+inoremap <expr><C-y>  deoplete#mappings#close_popup()
+inoremap <expr><C-e>  deoplete#mappings#cancel_popup()
 
-" " <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
@@ -491,6 +496,6 @@ imap <C-x><C-l> <plug>(fzf-complete-line)
 imap <C-x><C-f> <plug>(fzf-complete-path)
 imap <C-x><C-j> <plug>(fzf-complete-file-ag)
 
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+" nmap <leader><tab> <plug>(fzf-maps-n)
+" xmap <leader><tab> <plug>(fzf-maps-x)
+" omap <leader><tab> <plug>(fzf-maps-o)
