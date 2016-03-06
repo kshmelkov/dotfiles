@@ -74,7 +74,7 @@ set message_cachedir = ~/.cache/mutt
 
 set mailcap_path = ~/.mutt/mailcap
 
-macro pager d <exit><delete-message> "delete current message and exit to index"
+# macro pager d <exit><delete-message> "delete current message and exit to index"
 macro index,pager a ":set confirmappend=no\n<save-message>=Archive<enter>"  "mark message as Archived"
 # bind index G imap-fetch-mail
 
