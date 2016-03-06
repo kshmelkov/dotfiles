@@ -10,6 +10,7 @@ if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
+export PATH=$PATH:$HOME/.local/bin
 export ANT_HOME=/usr/share/apache-ant
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export GOPATH=~/.go
