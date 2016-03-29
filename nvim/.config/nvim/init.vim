@@ -134,19 +134,16 @@ set ignorecase
 set smartcase		" case-sensitive search if a pattern has uppercase symbols
 set gdefault		" default g flag in search replace
 
-set nrformats=          " treat all numerals as decimal
-
 " Interface settings
 set mouse=n
 set cursorline          " highlight current line
 set scrolloff=3         " minimum number of lines visible near above/below the cursor
 set ruler		" always show the cursor position
-" set relativenumber      " relative numbering from the current line
+set relativenumber      " relative numbering from the current line
 set number		" line numbering
 set showmatch           " show matching bracket after insertion
 set noshowmode          " don't how current mode in the status line (there is airline for that)
 set showcmd             " show a command while typing
-set laststatus=2	" always show the status line
 set list                " show trailing whitespaces
 set listchars=tab:▸\ ,trail:¬,nbsp:.,extends:❯,precedes:❮
 set wrap " Enable wrapping
@@ -161,7 +158,6 @@ set confirm		" confirm before :w :q and so on set autochdir set title
 set nobackup
 set nowritebackup
 set noswapfile
-set history=1000
 set undodir=~/.vim/undo " persistent-undo
 set undofile            " store all persistent-undos in a file
 
