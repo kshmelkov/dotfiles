@@ -25,6 +25,9 @@ bindsym $mod+x exec sflock
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -fn 'InconsolataLGC-8'
+bindsym $mod+s exec quickswitch.py -d "dmenu -fn 'InconsolataLGC-8'"
+# bindsym $mod+s exec passmenu -fn 'InconsolataLGC-8'
+bindsym $mod+Shift+n exec nmcli_dmenu
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -41,12 +44,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# split in horizontal orientation
-bindsym $mod+s split h
-
-# split in vertical orientation
-bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -140,5 +137,8 @@ bar {
 }
 
 focus_follows_mouse no
+hide_edge_borders both
+new_window pixel 1
 
 assign [class="^Firefox"] 1
+assign [class="^Emacs"] 3
