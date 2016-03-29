@@ -32,9 +32,8 @@ alias path='echo $PATH | tr ":" "\n"'
 alias cal='cal -m -3'
 alias zc='zcalc'
 alias ывсм='sdcv'
-alias psc='pass show -c'
 alias pingg='ping -c 3 8.8.8.8'
-alias upd='yaourt -Syu'
+alias upd='sudo pacman -Syu'
 
 alias py='python'
 alias py2='python2'
@@ -73,3 +72,14 @@ bindkey '\C-k' edit-command-line
 
 bindkey -M vicmd '\C-h' run-help
 bindkey -M viins '\C-h' run-help
+
+# pass completion suggested by @d4ndo (#362)
+_fzf_complete_pass() {
+  _fzf_complete '+m' "$@" < <(
+    pwdir=${PASSWORD_STORE_DIR-~/.password-store/}
+    stringsize="${#pwdir}"
+    find "$pwdir" -name "*.gpg" -print |
+        cut -c "$((stringsize + 1))"-  |
+        sed -e 's/\(.*\)\.gpg/\1/'
+  )
+}
