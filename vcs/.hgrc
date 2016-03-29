@@ -13,6 +13,7 @@ color =
 graphlog =
 mq =
 record =
+shelve =
 
 [pager]
 pager = LESS=FRSXQ less
