@@ -20,7 +20,6 @@ Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
 " General functionality
 " Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'simnalamburt/vim-mundo', {'on': 'GundoToggle'}
 Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-speeddating'
@@ -31,13 +30,13 @@ Plug 'Raimondi/delimitMate'
 Plug 'sudo.vim'
 Plug 'romainl/vim-qf'
 Plug 'mbbill/undotree'
-" Plug 'Shougo/unite.vim'
-" Plug 'Shougo/vimproc.vim', {'do': 'make' }
-" Plug 'Shougo/vimfiler.vim'
 
 " IDE-like plugins
 " Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/echodoc'
+Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'benekastah/neomake'
@@ -58,7 +57,6 @@ Plug 'junegunn/fzf.vim'
 " Integration
 Plug 'jamessan/vim-gnupg'
 Plug 'szw/vim-g'
-" Plug 'tmux-plugins/vim-tmux-focus-events'  " don't work on neovim
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 " Plug 'cazador481/fakeclip.neovim'  " should work, but...
@@ -79,7 +77,6 @@ Plug 'AndrewRadev/sideways.vim'
 
 " Filetype plugins
 " Plug 'jceb/vim-orgmode'
-" Plug 'itchyny/calendar.vim'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'freitass/todo.txt-vim', {'for': 'todo'}
@@ -89,7 +86,6 @@ Plug 'tmux-plugins/vim-tmux'
 " Plug 'JuliaLang/julia-vim', {'for': 'julia'}  " very strange bugs
 " Plug 'fs111/pydoc.vim'
 " Plug 'klen/python-mode'
-" Plug 'altercation/vim-colors-solarized'
 " Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
@@ -98,6 +94,7 @@ call plug#end()
 
 " Cosmetic changes
 set shortmess+=I        " Disable welcome message
+" set shortmess+=F        " new neovim feature, prevents file opening message
 set t_Co=256            " 256 color terminal
 let base16colorspace=256
 set background=dark
@@ -354,20 +351,17 @@ vnoremap / /\v
 
 autocmd BufNewFile,BufReadPost /dev/shm/pass* set filetype=password
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost ~/notes/* set filetype=markdown
-autocmd BufNewFile,BufReadPost ~/todo/* set filetype=todo
 
 autocmd BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
 
 augroup pencil
 	autocmd!
 	autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
-	autocmd FileType todo         NoPencil
 	autocmd FileType text         call pencil#init()
 	autocmd FileType password     NoPencil
 augroup END
 
-augroup deoplete
+augroup deoplete_off
         autocmd FileType text let b:deoplete_disable_auto_complete = 1
         autocmd FileType password let b:deoplete_disable_auto_complete = 1
         autocmd FileType mail let b:deoplete_disable_auto_complete = 1
@@ -380,7 +374,6 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
 let g:airline_theme = 'base16'
-" let g:airline_theme = 'solarized'
 let g:airline_section_x = '%{PencilMode()}'
 
 " buffers as pseudo-tabs
@@ -407,13 +400,8 @@ if (exists('+colorcolumn'))
     call matchadd('ColorColumn', '\%81v', 100)
 endif
 
-" python settings
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#show_call_signatures = "0"
-" let g:jedi#auto_initialization = 0
-
 let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pep8']  " flake8, pylint
-let g:neomake_python_python_exe = '/usr/bin/python2'
+let g:neomake_python_python_exe = '/usr/bin/python'
 autocmd! BufWritePost * Neomake
 
 " let g:latex_to_unicode_tab = 0
@@ -435,20 +423,12 @@ augroup line_return
         \ endif
 augroup END
 
-" Plugin key-mappings.
-" inoremap <expr><C-g>     neocomplete#undo_completion()
-" inoremap <expr><C-l>     neocomplete#complete_common_string()
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" autocmd FileType python setlocal omnifunc=jedi#completions
-" let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
 
 """ Neosnippets settings
 " Plugin key-mappings.
@@ -462,19 +442,6 @@ if has('conceal')
   set conceallevel=0
   set concealcursor=nc
 endif
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><Tab>  deoplete#mappings#manual_complete()
-
-inoremap <expr><C-y>  deoplete#mappings#close_popup()
-inoremap <expr><C-e>  deoplete#mappings#cancel_popup()
-
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
@@ -495,3 +462,40 @@ imap <C-x><C-j> <plug>(fzf-complete-file-ag)
 " nmap <leader><tab> <plug>(fzf-maps-n)
 " xmap <leader><tab> <plug>(fzf-maps-x)
 " omap <leader><tab> <plug>(fzf-maps-o)
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_camel_case = 1
+
+" <TAB>: completion.
+imap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+
+inoremap <expr><C-g> deoplete#mappings#undo_completion()
+" <C-l>: redraw candidates
+inoremap <expr><C-l>       deoplete#mappings#refresh()
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#mappings#close_popup() . "\<CR>"
+endfunction
+
+inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
+
+" set cmdheight=2
+let g:echodoc_enable_at_startup = 1
