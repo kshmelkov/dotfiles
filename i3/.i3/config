@@ -33,6 +33,67 @@ bindsym $mod+Shift+n exec nmcli_dmenu
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+bindsym $mod+i mode "i3"
+
+mode "i3" {
+    bindsym h focus left; mode "default"
+    bindsym j focus down; mode "default"
+    bindsym k focus up; mode "default"
+    bindsym l focus right; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym 1 workspace 1; mode "default"
+    bindsym 2 workspace 2; mode "default"
+    bindsym 3 workspace 3; mode "default"
+    bindsym 4 workspace 4; mode "default"
+    bindsym 5 workspace 5; mode "default"
+    bindsym 6 workspace 6; mode "default"
+    bindsym 7 workspace 7; mode "default"
+    bindsym 8 workspace 8; mode "default"
+    bindsym 9 workspace 9; mode "default"
+    bindsym 0 workspace 10; mode "default"
+
+    bindsym n workspace next; mode "default"
+    bindsym p workspace prev; mode "default"
+    bindsym Tab workspace back_and_forth; mode "default"
+    bindsym Shift+1 move container to workspace 1; mode "default"
+    bindsym Shift+2 move container to workspace 2; mode "default"
+    bindsym Shift+3 move container to workspace 3; mode "default"
+    bindsym Shift+4 move container to workspace 4; mode "default"
+    bindsym Shift+5 move container to workspace 5; mode "default"
+    bindsym Shift+6 move container to workspace 6; mode "default"
+    bindsym Shift+7 move container to workspace 7; mode "default"
+    bindsym Shift+8 move container to workspace 8; mode "default"
+    bindsym Shift+9 move container to workspace 9; mode "default"
+    bindsym Shift+0 move container to workspace 10; mode "default"
+
+    bindsym m exec mpc toggle; mode "default"
+# move focused window
+    bindsym Shift+h move left; mode "default"
+    bindsym Shift+j move down; mode "default"
+    bindsym Shift+k move up; mode "default"
+    bindsym Shift+l move right; mode "default"
+
+# enter fullscreen mode for the focused container
+    bindsym f fullscreen toggle; mode "default"
+
+# change container layout (stacked, tabbed, toggle split)
+    bindsym w layout stacking; mode "default"
+    bindsym t layout tabbed; mode "default"
+    bindsym e layout toggle split; mode "default"
+    bindsym r mode "resize"
+
+    bindsym d exec dmenu_run -fn 'InconsolataLGC-8'; mode "default"
+    bindsym s exec quickswitch.py -d "dmenu -fn 'InconsolataLGC-8'"; mode "default"
+    bindsym Shift+n exec nmcli_dmenu; mode "default"
+
+    bindsym q kill; mode "default"
+
+    bindsym x exec sflock; mode "default"
+    bindsym Return exec st -f "InconsolataLGC:dpi=210:size=8:antialias=true:hinting=true:autohint=false:rgba=rgb:hintstyle=hintslight:lcdfilter=lcddefault"; mode "default"
+}
+
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down

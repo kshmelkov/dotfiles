@@ -26,7 +26,7 @@ feh --randomize --bg-fill ~/wallpapers/*[jpg,png] &
 redshift -l 45.2002:5.7222 -t 6000:4000 &
 
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
-xcape -e 'Control_L=Escape'
+xcape -e 'Control_L=Escape;ISO_Level3_Shift=Super_L|I'
 
 xautolock -time 20 -locker sflock &
 syndaemon -t -k -i 0.5 -d
