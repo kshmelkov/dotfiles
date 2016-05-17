@@ -12,8 +12,14 @@
 	br = branch
 	ci = commit
 	st = status -sb
-        p = pull
         a = add
         ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
         ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
         lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+        amend = commit --amend --no-edit
+        edit = commit --amend --only
+        ff = merge --ff-only
+        ; unstage = reset -q HEAD --
+        discard = checkout --
+        uncommit = reset --mixed HEAD~
+        precommit = diff --cached --diff-algorithm=minimal -w
