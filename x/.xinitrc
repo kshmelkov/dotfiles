@@ -31,8 +31,9 @@ xcape -e 'Control_L=Escape;ISO_Level3_Shift=Super_L|I'
 xautolock -time 20 -locker sflock &
 syndaemon -t -k -i 0.5 -d
 
-# pasystray &
+tmux new-session -s default -d
+emacs --daemon &
 
-# emacs --daemon &
+pasystray &
 
 exec i3
