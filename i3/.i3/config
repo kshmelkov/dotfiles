@@ -40,7 +40,6 @@ mode "i3" {
     bindsym j focus down; mode "default"
     bindsym k focus up; mode "default"
     bindsym l focus right; mode "default"
-    bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym 1 workspace 1; mode "default"
     bindsym 2 workspace 2; mode "default"
@@ -146,9 +145,12 @@ bindsym $mod+Tab workspace back_and_forth
 # bindsym $mod+o scratchpad show
 bindsym $mod+m exec mpc toggle
 
-bindsym XF86AudioLowerVolume exec /usr/bin/pulseaudio-ctl down 5
-bindsym XF86AudioRaiseVolume exec /usr/bin/pulseaudio-ctl up 5
-bindsym XF86AudioMute exec /usr/bin/pulseaudio-ctl mute
+# bindsym XF86AudioLowerVolume exec /usr/bin/pulseaudio-ctl down 5
+# bindsym XF86AudioRaiseVolume exec /usr/bin/pulseaudio-ctl up 5
+# bindsym XF86AudioMute exec /usr/bin/pulseaudio-ctl mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 10
 
