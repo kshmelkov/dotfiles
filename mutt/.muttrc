@@ -74,79 +74,6 @@ set message_cachedir = ~/.cache/mutt
 
 set mailcap_path = ~/.mutt/mailcap
 
-# macro pager d <exit><delete-message> "delete current message and exit to index"
-macro index,pager a ":set confirmappend=no\n<save-message>=Archive<enter>"  "mark message as Archived"
-# bind index G imap-fetch-mail
-
-# Gmail-style keyboard shortcuts
-macro index ga "<change-folder>=Archive<enter>" "Go to all mail"
-macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
-macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index gs "<change-folder>=Sent<enter>" "Go to Sent"
-
-macro index,pager B "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
-# macro pager B "<pipe-message> urlview<Enter>" "call urlview to extract URLs out of a message"
-
-macro index S \
-"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
-<shell-escape>notmuch-mutt -r --prompt search<enter>\
-<change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
-<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
-        "notmuch: search mail"
-
-macro index "\cs" \
-"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
-<pipe-message>notmuch-mutt -r thread<enter>\
-<change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
-<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
-        "notmuch: reconstruct thread"
-
-macro index,pager i "<sync-mailbox><shell-escape>mbsync -a <enter><sync-mailbox>"
-
-# macro index <F6> \
-# "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
-# <pipe-message>notmuch-mutt tag -- -inbox<enter>\
-# <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
-#         "notmuch: remove message from inbox"
-
-# TODO think about it
-bind editor <space> noop
-bind index,pager <space> next-page
-bind index I sync-mailbox
-bind index,pager A create-alias
-
-bind index,pager p recall-message
-bind index,pager R group-reply
-bind index,pager,browser \Cd half-down
-bind index,pager,browser \Cu half-up
-bind index,pager,browser \Cf next-page
-bind index,pager,browser \Cb previous-page
-bind index,pager,browser N search-opposite
-bind index,pager \Cn next-thread
-bind index,pager \Cp previous-thread
-
-bind browser gg  top-page
-bind browser G   bottom-page
-
-# bind pager i   edit
-bind pager gg  top
-bind pager G   bottom
-bind pager j   next-line
-bind pager k   previous-line
-
-bind index,attach gg  first-entry
-bind index,attach G   last-entry
-
-bind index ~ toggle-new
-
-set query_command= "khard mutt --search '%s'"
-bind editor <Tab> complete-query
-bind editor ^T    complete
-
-macro index,pager "\ca" \
-    "<pipe-message>khard add-email<return>" \
-    "add the sender email address to khard"
-
 auto_view text/html                                      # view html automatically
 alternative_order text/plain text/enriched text/html     # save html for last
 
@@ -175,5 +102,6 @@ set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys
 set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r"
 set pgp_good_sign="^gpg: Good signature from"
 
-source ~/.mutt_colors2
+source ~/.mutt/keybindings
+source ~/.mutt/colorscheme
 source $alias_file
