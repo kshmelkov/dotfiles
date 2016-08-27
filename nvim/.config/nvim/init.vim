@@ -94,9 +94,10 @@ call plug#end()
 
 " Cosmetic changes
 set shortmess+=I        " Disable welcome message
-" set shortmess+=F        " new neovim feature, prevents file opening message
+set shortmess+=F        " new neovim feature, prevents file opening message
 set t_Co=256            " 256 color terminal
 let base16colorspace=256
+" set termguicolors
 set background=dark
 colorscheme base16-3024
 " colorscheme solarized
@@ -125,6 +126,7 @@ set softtabstop=4
 set tabstop=8
 set expandtab           " expand Tab into number of spaces
 set shiftround          " round spaces number to shiftwidth
+"set formatoptions  TODO
 
 " Search settings
 set ignorecase
@@ -143,9 +145,9 @@ set noshowmode          " don't how current mode in the status line (there is ai
 set showcmd             " show a command while typing
 set list                " show trailing whitespaces
 set listchars=tab:▸\ ,trail:¬,nbsp:.,extends:❯,precedes:❮
-set wrap " Enable wrapping
-set showbreak=↪\  " Character to precede line wraps
-set switchbuf=useopen   " Jump to the first open window that contains the specified buffer
+set wrap                " enable wrapping
+set showbreak=↪\        " character to precede line wraps
+set switchbuf=useopen   " jump to the first open window that contains the specified buffer
 
 " Persistence settings
 set hidden		" don't abandon a hidden buffer
@@ -346,8 +348,7 @@ nnoremap / /\v
 vnoremap / /\v
 
 " visual reselect of just pasted
-" TODO very interesting default command
-" nnoremap gp `[v`]
+nnoremap gV `[v`]
 
 autocmd BufNewFile,BufReadPost /dev/shm/pass* set filetype=password
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -400,7 +401,8 @@ if (exists('+colorcolumn'))
     call matchadd('ColorColumn', '\%81v', 100)
 endif
 
-let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pep8']  " flake8, pylint
+let g:neomake_python_enabled_makers = ['python', 'flake8']  " flake8, pylint
+" let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pep8']  " flake8, pylint
 let g:neomake_python_python_exe = '/usr/bin/python'
 autocmd! BufWritePost * Neomake
 
