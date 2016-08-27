@@ -5,10 +5,15 @@
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
+export HISTSIZE=1000
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+GPG_TTY=$(tty)
+export GPG_TTY
 
 [[ -s "/etc/zsh/aws_complete.zsh" ]] && source "/etc/zsh/aws_complete.zsh"
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
@@ -26,7 +31,7 @@ alias m='mpv'
 alias mm='mpv --shuffle --fs'
 alias img='feh -FZd --draw-tinted'
 alias nh='unset HISTFILE'
-alias ydl='youtube-dl'
+alias ydl=' youtube-dl'
 alias myip='curl ifconfig.me'
 alias path='echo $PATH | tr ":" "\n"'
 alias cal='cal -m -3'
@@ -34,6 +39,8 @@ alias zc='zcalc'
 alias ывсм='sdcv'
 alias pingg='ping -c 3 8.8.8.8'
 alias upd='sudo pacman -Syu'
+alias ee='emacsclient -nw'
+alias cd=' cd'
 
 alias py='python'
 alias py2='python2'
@@ -54,6 +61,9 @@ alias -s html='firefox'
 alias jrnl=' jrnl'
 
 alias offscreen='xset dpms force off'
+
+alias -g P='| pe | fzf | read filename; [ ! -z $filename ] && vim $filename'
+alias pe='path-extractor'
 
 unalias rm
 
@@ -83,3 +93,6 @@ _fzf_complete_pass() {
         sed -e 's/\(.*\)\.gpg/\1/'
   )
 }
+
+
+source ~/.zfzf
