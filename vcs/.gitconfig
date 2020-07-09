@@ -23,3 +23,5 @@
         discard = checkout --
         uncommit = reset --mixed HEAD~
         precommit = diff --cached --diff-algorithm=minimal -w
+[pull]
+	rebase = true

@@ -27,7 +27,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-characterize'
 Plug 'Raimondi/delimitMate'
-Plug 'sudo.vim'
+" Plug 'sudo.vim'
 Plug 'romainl/vim-qf'
 Plug 'mbbill/undotree'
 
@@ -39,7 +39,7 @@ Plug 'Shougo/echodoc'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
 Plug 'ludovicchabant/vim-lawrencium'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -87,6 +87,7 @@ Plug 'tmux-plugins/vim-tmux'
 " Plug 'fs111/pydoc.vim'
 " Plug 'klen/python-mode'
 " Plug 'nathanaelkane/vim-indent-guides'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -96,11 +97,11 @@ call plug#end()
 set shortmess+=I        " Disable welcome message
 set shortmess+=F        " new neovim feature, prevents file opening message
 set t_Co=256            " 256 color terminal
-let base16colorspace=256
-" set termguicolors
+" let base16colorspace=256
+set termguicolors
 set background=dark
-colorscheme base16-3024
-" colorscheme solarized
+" colorscheme base16-3024
+colorscheme solarized
 set visualbell          " visual X11 bell instead of audible bell
 set title               " set window title to a filename
 set lazyredraw          " don't redraw while executing macros and commands
@@ -404,7 +405,7 @@ endif
 let g:neomake_python_enabled_makers = ['python', 'flake8']  " flake8, pylint
 " let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pep8']  " flake8, pylint
 let g:neomake_python_python_exe = '/usr/bin/python'
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 " let g:latex_to_unicode_tab = 0
 " let g:latex_to_unicode_suggestions = 0

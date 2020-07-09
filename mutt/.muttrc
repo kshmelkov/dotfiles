@@ -6,7 +6,8 @@ set reverse_alias = yes
 
 set copy              = yes
 set edit_headers
-set editor            = "nvim +/^$ ++1"
+set editor            = "emacsclient -nw %s"
+# set editor            = "vim +/^$ ++1"
 
 set beep = no
 set beep_new = yes

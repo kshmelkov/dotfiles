@@ -1,8 +1,8 @@
 export BROWSER=firefox
 
-export EDITOR='nvim'
-export VISUAL='nvim'
-export SUDO_EDITOR='nvim'
+export EDITOR='vim'
+export VISUAL='vim'
+export SUDO_EDITOR='vim'
 export PAGER='less'
 export MERGE_EDITOR='vimdiff'
 
@@ -10,14 +10,14 @@ if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$HOME/.local/bin:$PATH
 export ANT_HOME=/usr/share/apache-ant
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export GOPATH=~/.go
 export PYTHONPATH=.
 export PYTHONSTARTUP=~/.pythonrc
 export TODOTXT_DEFAULT_ACTION=ls
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH:$GOPATH/bin"
+export PATH="$(pyenv root)/shims:$(ruby -e 'print Gem.user_dir')/bin:$PATH:$GOPATH/bin:$HOME/.cargo/bin"
 export LEDGER_FILE='~/money.ldg'
 export PYTHONDOCS=/usr/share/doc/python2/html/
 
@@ -62,4 +62,6 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+  exec startx
+fi

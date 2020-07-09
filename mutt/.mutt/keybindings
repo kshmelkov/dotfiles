@@ -8,8 +8,8 @@ macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index gs "<change-folder>=Sent<enter>" "Go to Sent"
 
-macro index,pager B "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
-# macro pager B "<pipe-message> urlview<Enter>" "call urlview to extract URLs out of a message"
+# macro index,pager B "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro pager B "<pipe-message> urlview<Enter>" "call urlview to extract URLs out of a message"
 
 macro index S \
 "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\

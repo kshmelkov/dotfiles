@@ -15,20 +15,21 @@ xrandr --dpi 210
 xrdb -merge ~/.Xresources
 start-pulseaudio-x11
 unclutter &
-setxkbmap -layout us,ru -variant altgr-intl, -option grp:shifts_toggle,terminate:ctrl_alt_bksp,grp_led:caps,caps:ctrl_modifier
+setxkbmap -layout us,ru -variant altgr-intl, -option grp:shifts_toggle,terminate:ctrl_alt_bksp,grp:menu_toggle
 devmon --no-gui &
 gnome-keyring
 nm-applet &
-mpd
-mpc random
-mpc repeat
+# mpd
+# mpc random
+# mpc repeat
 feh --randomize --bg-fill ~/wallpapers/*[jpg,png] &
-redshift -l 45.2002:5.7222 -t 6000:4000 &
+redshift -l 51.5074:0.1278 -t 6000:3000 &
+# redshift -l -42.87936:147.32941 -t 6000:3000 &
 
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 xcape -e 'Control_L=Escape;ISO_Level3_Shift=Super_L|I'
 
-xautolock -time 20 -locker sflock &
+# xautolock -time 20 -locker sflock &
 syndaemon -t -k -i 0.5 -d
 
 tmux new-session -s default -d

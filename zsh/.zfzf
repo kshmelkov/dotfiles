@@ -24,10 +24,10 @@ fo() {
 }
 
 # fd - cd to selected directory
-fd() {
-  DIR=`find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf-tmux` \
-    && cd "$DIR"
-}
+# fd() {
+#   DIR=`find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf-tmux` \
+#     && cd "$DIR"
+# }
 
 # fda - including hidden directories
 fda() {
